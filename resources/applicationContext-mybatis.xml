@@ -1,21 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
- xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
- xmlns:p="http://www.springframework.org/schema/p"
- xmlns:aop="http://www.springframework.org/schema/aop"
- xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-    http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-3.0.xsd
-    http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
-    http://www.springframework.org/schema/jdbc
- http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
- http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"> 
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xmlns:aop="http://www.springframework.org/schema/aop"  
+        xmlns:p="http://www.springframework.org/schema/p"  
+        xmlns:tx="http://www.springframework.org/schema/tx"  
+        xmlns:context="http://www.springframework.org/schema/context"  
+        xsi:schemaLocation="   
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd   
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd   
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+            http://www.springframework.org/schema/context 
+            http://www.springframework.org/schema/context/spring-context.xsd">  
             
-    <context:component-scan base-package="stusystem.services"/> 
-    <context:component-scan base-package="stusystem.dao"/>  
+    <context:component-scan base-package="cn.appmanager.service"/> 
+    <context:component-scan base-package="cn.appmanager.dao"/>  
     
     <!-- 读取数据库配置文件 -->
     <context:property-placeholder location="classpath:database.properties"/>
@@ -30,12 +28,9 @@
     </bean>
     
     <!-- 事务管理 -->
-   
-    
    	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
    		<property name="dataSource" ref="dataSource"/>
    	</bean> 
-   	
    	
    	<!-- 配置mybitas SqlSessionFactoryBean-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -43,12 +38,21 @@
     	<property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
     
-   	
-	<!-- 配置DAO接口 -->
+   	<!-- AOP 事务处理 开始 -->    
+	<aop:aspectj-autoproxy />
+	<aop:config  proxy-target-class="true">
+		<aop:pointcut expression="execution(* *cn.appmanager.service..*(..))" id="transService"/>
+		<aop:advisor pointcut-ref="transService" advice-ref="txAdvice" />
+	</aop:config> 
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">  
+	    <tx:attributes>  
+	       <tx:method name="appmanager*"  propagation="REQUIRED" rollback-for="Exception"  />
+	    </tx:attributes>  
+	</tx:advice> 
+	<!-- AOP 事务处理 结束 -->
+	
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
-         <property name="basePackage" value="stusystem.dao" />  
+         <property name="basePackage" value="cn.appmanager.dao" />  
     </bean>
     
-    <!-- 扫描包(service,dao) -->
-    <context:component-scan base-package="cn.appmanager"/> 
 </beans>

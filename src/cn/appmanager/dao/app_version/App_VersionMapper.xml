@@ -3,6 +3,6 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="cn.appmanager.dao.app_categpry.App_CategpryMapper">
+<mapper namespace="cn.appmanager.dao.app_version.App_VersionMapper">
 
 </mapper>
