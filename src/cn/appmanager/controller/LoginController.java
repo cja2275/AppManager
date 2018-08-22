@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.appmanager.pojo.Div_User;
-import cn.appmanager.service.dev_user.Dev_userService.Dev_userService;
+import cn.appmanager.service.dev_user.Dev_userService;
 
 @Controller
 
