@@ -68,7 +68,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
 		<property name="viewResolvers">
 			<list>
 				<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
-					<property name="prefix" value="/jsp/"/>
+					<property name="prefix" value="/WEB-INF/jsp/"/>
 					<property name="suffix" value=".jsp"/>
 				</bean>		
 			</list>

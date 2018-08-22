@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper>
+  <!--   修改INFO基本信息 -->
+    <insert id="updateAppInfo" parameterType="app_Info" >
+    	UPDATE app_info  a SET  a.softwareName=#{app_Info.softwareName} , 
+    	a.supportROM=#{app_Info.supportROM},a.`interfaceLanguage`=#{app_Info.interfaceLanguage},
+    	a.`softwareSize`=#{app_Info.softwareSize},a.`downloads`=#{app_Info.downloads},
+    	a.`flatformId`=#{app_Info.flatformId},a.`categoryLevel1`=#{app_Info.categoryLevel1},
+    	a.`categoryLevel2`=#{app_Info.categoryLevel2},a.`categoryLevel3`=#{app_Info.categoryLevel3},
+    	a.`appInfo`=#{app_Info.appInfo},a.`logoPicPath`=#{app_Info.logoPicPath}
+ WHERE id=59;
+    </insert>
+    
+    </mapper>
