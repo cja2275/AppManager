@@ -1,4 +1,4 @@
-package cn.appmanager.dao.Backend_User;
+package cn.appmanager.dao.backend_user;
 
 public interface Backend_UserMapper {
 

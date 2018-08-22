@@ -1,4 +1,4 @@
-package cn.appmanager.dao.App_Categpry;
+package cn.appmanager.dao.app_categpry;
 
 public interface App_CategpryMapper {
 

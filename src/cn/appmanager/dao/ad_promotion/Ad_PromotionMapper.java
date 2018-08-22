@@ -1,4 +1,4 @@
-package cn.appmanager.dao.Ad_Promotion;
+package cn.appmanager.dao.ad_promotion;
 
 public interface Ad_PromotionMapper {
 

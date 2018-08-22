@@ -1,4 +1,4 @@
-package cn.appmanager.dao.App_Version;
+package cn.appmanager.daoapp_version;
 
 public interface App_VersionMapper {
 

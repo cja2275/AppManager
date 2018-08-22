@@ -1,4 +1,4 @@
-package cn.appmanager.dao.Data_Dictionary;
+package cn.appmanager.dao.data_dictionary;
 
 public interface Data_DictionaryMapper {
 
