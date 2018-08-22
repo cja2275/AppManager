@@ -4,16 +4,16 @@ import java.util.Date;
 
 public class Div_User {
 
-	private Integer id;//bigint(30) NOT NULLÖ÷¼üid
-	private String devCode;//varchar(50) NULL¿ª·¢ÕßÕÊºÅ
-	private String devName;//varchar(50) NULL¿ª·¢ÕßÃû³Æ
-	private String devPassword;//varchar(50) NULL¿ª·¢ÕßÃÜÂë
-	private String devEmail;//varchar(50) NULL¿ª·¢Õßµç×ÓÓÊÏä
-	private String devInfo;//varchar(500) NULL¿ª·¢Õß¼ò½é
-	private Integer createdBy;//bigint(30) NULL´´½¨Õß£¨À´Ô´ÓÚbackend_userÓÃ»§±íµÄÓÃ»§id£©
-	private Date creationDate;//datetime NULL´´½¨Ê±¼ä
-	private Integer modifyBy;//bigint(30) NULL¸üÐÂÕß£¨À´Ô´ÓÚbackend_userÓÃ»§±íµÄÓÃ»§id£©
-	private Date modifyDate;//datetime NULL×îÐÂ¸üÐÂÊ±¼ä
+	private Integer id;//bigint(30) 
+	private String devCode;//varchar(50) NULLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êºï¿½
+	private String devName;//varchar(50) NULLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String devPassword;//varchar(50) NULLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String devEmail;//varchar(50) NULLï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String devInfo;//varchar(500) NULLï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½ï¿½
+	private Integer createdBy;//bigint(30) NULLï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½Ô´ï¿½ï¿½backend_userï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½idï¿½ï¿½
+	private Date creationDate;//datetime NULLï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+	private Integer modifyBy;//bigint(30) NULLï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½Ô´ï¿½ï¿½backend_userï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½idï¿½ï¿½
+	private Date modifyDate;//datetime NULLï¿½ï¿½ï¿½Â¸ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 	public Integer getId() {
 		return id;
 	}
