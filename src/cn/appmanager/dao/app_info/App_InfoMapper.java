@@ -1,8 +1,8 @@
 package cn.appmanager.dao.app_info;
 
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
+
 import org.springframework.ui.Model;
 
 import cn.appmanager.pojo.App_Info;
@@ -17,7 +17,6 @@ public interface App_InfoMapper {
 			  						  @Param("start")int start,
 			  						  @Param("pageSize")int pageSize,
 			  						  @Param("model")Model model);
-	
 	
 	//修改APP信息
 	public int updateAppInfo(@Param("app_Info")App_Info app_Info);

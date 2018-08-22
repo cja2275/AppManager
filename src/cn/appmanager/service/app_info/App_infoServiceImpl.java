@@ -19,6 +19,5 @@ public class App_infoServiceImpl implements App_infoService {
 			Integer categoryLevel2, Integer categoryLevel3, int start, int pageSize) {
 		return null;
 	}
-	
 
 }
