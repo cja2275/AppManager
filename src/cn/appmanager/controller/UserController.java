@@ -21,15 +21,15 @@ public class UserController {
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>.");
 		return "test";
 	}
-	//修改APP基本信息
+	//跳转修改APP基本信息
 	@RequestMapping(value="/updateApp_Info.html")
-	public String updateApp_Info(){
+	public String updateApp_Info(@RequestParam(value="App_Info",required=false)App_Info app_Info){
 		return "updateApp_Info";
 	}
 	
 	@RequestMapping(value="/updateApp_InfoSave.html",method=RequestMethod.POST)
 	public String updateApp_InfoSave(@RequestParam("App_Info")App_Info app_Info){
-		if()
+		
 		return "a";
 	}
 
