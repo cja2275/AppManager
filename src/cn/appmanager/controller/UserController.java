@@ -13,9 +13,9 @@ import cn.appmanager.service.app_info.App_infoService;
 @Controller
 @RequestMapping(value="/user")
 public class UserController {
-/*	@Resource
+	@Resource
 	private App_infoService app_infoService;
-	*/
+	
 	
 	//跳转修改APP基本信息
 	@RequestMapping(value="/updateApp_Info.html")

@@ -24,5 +24,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   	 修改appINFO页面
+  	 <form action="${pageContext.request.contextPath }/user/updateApp_InfoSave.html">
+  	 	<div>软件名称: <input type="text" value=""></div>
+  	 	<div>APK名称: <input type="text" value=""></div>
+  	 	<div>支持ROM: <input type="text" value=""></div>
+  	 	<div>界面语言: <input type="text" value=""></div>
+  	 	<div>软件大小: <input type="text" value=""></div>
+  	 	<div>下载次数: <input type="text" value=""></div>
+  	 	<div>所属平台: <input type="text" value=""></div>
+  	 	<div>一级分类: <input type="text" value=""></div>
+  	 	<div>二级分类: <input type="text" value=""></div>
+  	 	<div>三级分类: <input type="text" value=""></div>
+  	 	<div>APP状态: <input type="text" value=""></div>
+  	 	<div>应用简介: <input type="text" value=""></div>
+  	 	<div> <input type="submit" value="提交"></div>
+  	 </form>
   </body>
 </html>
