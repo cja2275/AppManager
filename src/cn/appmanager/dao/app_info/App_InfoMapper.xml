@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    <mapper>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.appmanager.dao.app_info.App_InfoMapper">
+  
   <!--   修改INFO基本信息 -->
     <insert id="updateAppInfo" parameterType="app_Info" >
     	UPDATE app_info  a SET  a.softwareName=#{app_Info.softwareName} , 
@@ -12,5 +16,6 @@
     	a.`appInfo`=#{app_Info.appInfo},a.`logoPicPath`=#{app_Info.logoPicPath}
  WHERE id=59;
     </insert>
-    
-    </mapper>
+   
+</mapper>
+

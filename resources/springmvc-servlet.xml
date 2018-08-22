@@ -1,30 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:context="http://www.springframework.org/schema/context" 
-xmlns:mvc="http://www.springframework.org/schema/mvc" 
-xmlns:task="http://www.springframework.org/schema/task" 
-xmlns:aop="http://www.springframework.org/schema/aop"
-xsi:schemaLocation="http://www.springframework.org/schema/beans 
-http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
-http://www.springframework.org/schema/context 
-http://www.springframework.org/schema/context/spring-context-3.0.xsd 
-http://www.springframework.org/schema/mvc 
-http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
-http://www.springframework.org/schema/task 
-http://www.springframework.org/schema/task/spring-task-3.1.xsd 
-http://www.springframework.org/schema/aop
-http://www.springframework.org/schema/aop/spring-aop.xsd
-">
-    <!-- 扫描 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+        
 	<context:component-scan base-package="cn.appmanager.controller"/>
 	
-	
-	<!-- 拦截器 -->
-	<mvc:default-servlet-handler/>
-	
-	
-	<!-- 处理解析器 -->
 	<mvc:annotation-driven>
 	 	<mvc:message-converters>
 	 		<bean class="org.springframework.http.converter.StringHttpMessageConverter">
@@ -51,7 +40,6 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 	
-	<!-- 静态文件 -->
 	<mvc:resources location="/statics/" mapping="/statics/**"></mvc:resources>
 	
 	<!-- 配置多视图解析器：允许同样的内容数据呈现不同的view -->
@@ -75,7 +63,13 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
 		</property>
 	</bean>
 	  
-	
+	<!-- 配置interceptors -->
+<!-- 	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/sys/**"/>
+			<bean class="cn.smbms.interceptor.SysInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors> -->
 	
 	
 	<!-- 配置MultipartResolver，用于上传文件，使用spring的CommonsMultipartResolver -->  
