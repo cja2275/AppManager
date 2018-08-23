@@ -14,8 +14,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	a.`flatformId`=#{app_Info.flatformId},a.`categoryLevel1`=#{app_Info.categoryLevel1},
     	a.`categoryLevel2`=#{app_Info.categoryLevel2},a.`categoryLevel3`=#{app_Info.categoryLevel3},
     	a.`appInfo`=#{app_Info.appInfo},a.`logoPicPath`=#{app_Info.logoPicPath}
- WHERE id=59;
+ 		WHERE id=59;
     </insert>
+   <!-- 查询app信息byId -->
+   <select id="appInfoById" resultType="App_Info">
+    SELECT softwareName,APKName,supportROM,interfaceLanguage,softwareSize,
+    downloads,flatformId,categoryLevel1,categoryLevel2,categoryLevel3,
+    `status`,appInfo,logoPicPath 
+    FROM app_info 
+    WHERE id=#{id}
+   </select>
    
 </mapper>
 
