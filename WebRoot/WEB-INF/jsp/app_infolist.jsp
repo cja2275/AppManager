@@ -41,7 +41,8 @@
 			        <option value="flatformId">平板</option>
 			        <option value="flatformId">通用</option></select>
 			一级分类：<select id="categoryLevel1" name="categoryLevel1">
-						<c:if test="${categoryLevel1List != null }">
+						<c:if test="${categoryLevel1List!=null}"></c:if>
+						
 						   <option value="0">--请选择--</option>
 						   <c:forEach var="categoryLevel1" items="${categoryLevel1List}">
 						   		<option <c:if test="${role.id == queryUserRole }">selected="selected"</c:if>

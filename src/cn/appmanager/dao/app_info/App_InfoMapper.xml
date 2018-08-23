@@ -93,6 +93,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getCategoryLevel2List">
 		SELECT categoryName FROM app_category c 
 		WHERE categoryCode LIKE CONCAT ('%','APP_','%')AND parentId=1 OR categoryCode LIKE CONCAT ('%','GAME_','%')AND parentId=2
+		<if test="">
+		
+		</if>
 	</select>
 	<select id="getCategoryLevel3List">
 		SELECT categoryName FROM app_category c 
