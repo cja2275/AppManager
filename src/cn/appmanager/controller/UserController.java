@@ -21,6 +21,7 @@ public class UserController {
 	@Resource
 	private App_infoService app_infoService;
 	
+
 	@RequestMapping(value="/test.html")
 	public String test(){
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>.");
@@ -104,19 +105,18 @@ public class UserController {
 	
 	
 	
+
 	
 	//跳转修改APP基本信息
 	@RequestMapping(value="/updateApp_Info.html")
-	public String updateApp_Info(@RequestParam(value="App_Info",required=false)App_Info app_Info){
-		return "updateApp_Info";
+	public String updateApp_Info(){
+		return "updateApp";
 	}
-	
+	//保存修改
 	@RequestMapping(value="/updateApp_InfoSave.html",method=RequestMethod.POST)
 	public String updateApp_InfoSave(@RequestParam("App_Info")App_Info app_Info){
-		
 		return "a";
 	}
-
 	
 	
 }
