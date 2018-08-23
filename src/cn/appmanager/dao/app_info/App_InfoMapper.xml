@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="cn.appmanager.dao.app_info.App_InfoMapper">
 
 	<!-- 查询全部信息 -->
-	<select id="getApp_InfoList" resultType="Standard">
+	<select id="getApp_InfoList" resultType="App_Info">
 		SELECT i.softwareName,i.APKName,i.softwareSize,
 		i.flatformId,
 		(SELECT

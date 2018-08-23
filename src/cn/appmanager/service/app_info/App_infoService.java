@@ -3,7 +3,6 @@ package cn.appmanager.service.app_info;
 
 import java.util.List;
 
-import org.springframework.ui.Model;
 
 import cn.appmanager.pojo.App_Info;
 import cn.appmanager.tools.PageSupport;

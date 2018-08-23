@@ -98,7 +98,7 @@ public class UserController {
 	
 	//跳转修改APP基本信息
 	@RequestMapping(value="/updateApp_Info.html")
-	public String updateApp_Info(@RequestParam("App_Info")App_Info app_Info){
+	public String updateApp_Info(int id){
 		return "updateApp";
 	}
 	//保存修改
