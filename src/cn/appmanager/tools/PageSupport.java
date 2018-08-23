@@ -16,7 +16,15 @@ public class PageSupport {
 	private int totalPageCount = 1;
 	
 	//页面内容
-	private List<Object> list;
+	private List list;
+
+	public List getList() {
+		return list;
+	}
+
+	public void setList(List list) {
+		this.list = list;
+	}
 
 	public int getCurrentPageNo() {
 		return currentPageNo;

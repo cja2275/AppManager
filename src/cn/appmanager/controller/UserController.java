@@ -23,12 +23,6 @@ public class UserController {
 	private App_infoService app_infoService;
 	
 
-	@RequestMapping(value="/test.html")
-	public String test(){
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>.");
-		return "test";
-	}
-	
 	
 	//查看全部信息
 	@RequestMapping(value="/App_InfoList.html")
@@ -107,22 +101,22 @@ public class UserController {
 		return "app_infolist";
 	}
 		
-	
-	
-	
-	
-	
 
 	
 	//跳转修改APP基本信息
 	@RequestMapping(value="/updateApp_Info.html")
-	public String updateApp_Info(){
+	public String updateApp_Info(int id){
 		return "updateApp";
 	}
 	//保存修改
 	@RequestMapping(value="/updateApp_InfoSave.html",method=RequestMethod.POST)
-	public String updateApp_InfoSave(@RequestParam("App_Info")App_Info app_Info){
-		return "a";
+	public String updateApp_InfoSave(@RequestParam("App_Info")App_Info app_Info,
+										Model model){
+		if(app_infoService.updateAppInfo(app_Info)>0){
+			return "app_infolist";
+		}
+		model.addAttribute("id",app_Info.getId());
+		return "updateApp";
 	}
 	
 	

@@ -12,6 +12,7 @@ import cn.appmanager.dao.app_info.App_InfoMapper;
 
 import cn.appmanager.dao.app_info.App_InfoMapper;
 import cn.appmanager.pojo.App_Info;
+import cn.appmanager.tools.PageSupport;
 
 @Service
 public class App_infoServiceImpl implements App_infoService {
@@ -52,5 +53,21 @@ public class App_infoServiceImpl implements App_infoService {
 		return app_InfoMapper.appInfoById(id);
 	}
 
+	
+	//获得待审核APP列表
+	@Override
+	public PageSupport getCheckingApp(PageSupport page) {
+		// TODO Auto-generated method stub
+		page.setTotalCount(this.app_InfoMapper.countCheckingApp());
+		page.setPageSize(5);
+		page.setList(this.app_InfoMapper.getCheckingAppList(page));
+		return page;
+	}
+
+	//审核APP
+	public int checkApp(Integer id) {
+		// TODO Auto-generated method stub
+		return this.app_InfoMapper.checkApp(id);
+	}
 
 }
