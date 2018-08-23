@@ -14,9 +14,15 @@ public class Data_dictionaryServiceImpl implements Data_dictionaryService{
 	@Resource
 	private Data_DictionaryMapper data_DictionaryMapper;
 
+
 	@Override
 	public List<Data_Dictionary> getData_DictionaryList(String typeCode) {
 		return data_DictionaryMapper.getData_DictionaryList(typeCode);
 	}
 
+
+	//查询平台
+		public List<Data_Dictionary> getPlatformList(){
+			return data_DictionaryMapper.getPlatformList();
+		}
 }

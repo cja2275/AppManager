@@ -5,12 +5,10 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 
 import cn.appmanager.dao.app_info.App_InfoMapper;
 
-import cn.appmanager.dao.app_info.App_InfoMapper;
 import cn.appmanager.pojo.App_Info;
 import cn.appmanager.tools.PageSupport;
 
@@ -59,5 +57,8 @@ public class App_infoServiceImpl implements App_infoService {
 		// TODO Auto-generated method stub
 		return this.app_InfoMapper.checkApp(id);
 	}
-
+	//删除app信息byID
+			public int delAppInfo(Integer id){
+				return this.app_InfoMapper.delAppInfo(id);
+			}
 }

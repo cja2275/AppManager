@@ -32,6 +32,9 @@ public interface App_InfoMapper {
 	public int updateAppInfo(@Param("app_Info")App_Info app_Info);
 	//根据id查app信息
 	public App_Info appInfoById(@Param("id")Integer id);
+	//删除app信息byID
+	public int delAppInfo(@Param("id")Integer id);
+	
 
 	public int countCheckingApp();
 

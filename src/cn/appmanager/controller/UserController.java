@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import cn.appmanager.pojo.App_Category;
 import cn.appmanager.pojo.App_Info;
 import cn.appmanager.pojo.Data_Dictionary;
+
 import cn.appmanager.service.app_category.App_categoryService;
 import cn.appmanager.service.app_info.App_infoService;
 import cn.appmanager.service.data_dictionary.Data_dictionaryService;
@@ -132,7 +133,11 @@ public class UserController {
 	
 	//跳转修改APP基本信息
 	@RequestMapping(value="/updateApp_Info.html")
-	public String updateApp_Info(int id){
+	public String updateApp_Info(int id,Model model){
+		App_Info a=app_infoService.appInfoById(id);
+		List<Data_Dictionary> list=data_dictionaryService.getPlatformList();
+		model.addAttribute("app_Info",a);
+		model.addAttribute("flatformList",list);
 		return "updateApp";
 	}
 	//保存修改
@@ -145,6 +150,27 @@ public class UserController {
 		model.addAttribute("id",app_Info.getId());
 		return "updateApp";
 	}
+	//显示平台列表
+	@RequestMapping(value="/getplatformlist.json")
+	public List<Data_Dictionary> getPlatformList(){
+		List<Data_Dictionary> list=data_dictionaryService.getPlatformList();
+		return list;
+	}
+	//删除app信息
+	@RequestMapping("/delappinfo.html")
+	public String delAppInfo(@RequestParam("id")Integer id ,Model model){
+		int i=app_infoService.delAppInfo(id);
+		if(i>0){
+			model.addAttribute("error","删除成功");
+		}else{
+			model.addAttribute("error","删除失败");
+		}
+		return "app_infolist";
+	}
+	//查看app信息
 	
-	
+	/*public String showAppInfo(@RequestParam("id")Integer id ,Model model){
+		App_Info info=app_infoService.appInfoById(id);
+		String 
+	}*/
 }

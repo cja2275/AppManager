@@ -104,8 +104,8 @@ public class App_Info {
 	public String getAPKName() {
 		return APKName;
 	}
-	public void setAPKName(String aPKName) {
-		APKName = aPKName;
+	public void setaPKName(String APKName) {
+		this.APKName = APKName;
 	}
 	public String getSupportROM() {
 		return supportROM;

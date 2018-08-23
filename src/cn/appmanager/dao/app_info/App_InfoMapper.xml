@@ -115,7 +115,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     FROM app_info 
     WHERE id=#{id}
    </select>
-
+	<!-- 删除app信息byId -->
+   <delete id="delAppInfo">
+   	 DELETE FROM app_info WHERE id=${id}
+   </delete>
+   
+   
+   
    
    
    <!-- 查询待审核APP总数 -->
