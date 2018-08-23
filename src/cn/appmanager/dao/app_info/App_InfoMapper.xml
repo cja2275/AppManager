@@ -85,6 +85,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</trim>
 	</select>
 
+
+	<!-- 查询分级列表 -->
+	<select id="getCategoryLevel1List">
+		SELECT categoryName FROM app_category c WHERE categoryCode LIKE CONCAT ('%','ALL_','%')
+	</select>
+	<select id="getCategoryLevel2List">
+		SELECT categoryName FROM app_category c 
+		WHERE categoryCode LIKE CONCAT ('%','APP_','%')AND parentId=1 OR categoryCode LIKE CONCAT ('%','GAME_','%')AND parentId=2
+		<if test="">
+		
+		</if>
+	</select>
+	<select id="getCategoryLevel3List">
+		SELECT categoryName FROM app_category c 
+		WHERE categoryCode LIKE CONCAT ('%','APP_','%')AND parentId=3 OR parentId=4 
+		OR categoryCode LIKE CONCAT ('%','GAME_','%')AND parentId=19 OR parentId=20 OR parentId=21 OR parentId=22
+	</select>
+
+
+
+
+
+
+
+
+  
+
   <!--   修改INFO基本信息 -->
     <insert id="updateAppInfo" parameterType="app_Info" >
     	UPDATE app_info  a SET  a.softwareName=#{app_Info.softwareName} , 
@@ -105,6 +132,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     FROM app_info 
     WHERE id=#{id}
    </select>
+
    
    
    <!-- 查询待审核APP总数 -->
@@ -119,6 +147,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    		where status=1
    		limit #{(page.currentPageNo-1)*page.pageSize},#{pageSize}
    </select>
+   
+   <!-- 审核APP -->
+   <update id="checkApp">
+   		UPDATE 
+		app_info
+		SET
+		`status`=2
+		WHERE id = #{id} ;
+   		
+   </update>
 </mapper>
 
 

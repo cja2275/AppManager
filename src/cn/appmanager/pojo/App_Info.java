@@ -29,7 +29,7 @@ public class App_Info {
 	  private String logoLocPath;         //LOGO图片的服务器存储路径                                                                            
 	  private Integer versionId;          //最新的版本id  
 	  
-	  private App_Categpry app_Categpry;//app所属分类
+	  private App_Category app_Categpry;//app所属分类
 	  private Data_Dictionary data_Dictionary;//所属平台
 	  
 	  
@@ -39,10 +39,10 @@ public class App_Info {
 	public void setData_Dictionary(Data_Dictionary data_Dictionary) {
 		this.data_Dictionary = data_Dictionary;
 	}
-	public App_Categpry getApp_Categpry() {
+	public App_Category getApp_Categpry() {
 		return app_Categpry;
 	}
-	public void setApp_Categpry(App_Categpry app_Categpry) {
+	public void setApp_Categpry(App_Category app_Categpry) {
 		this.app_Categpry = app_Categpry;
 	}
 	public Integer getId() {

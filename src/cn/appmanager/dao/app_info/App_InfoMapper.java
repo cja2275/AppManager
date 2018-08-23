@@ -25,7 +25,10 @@ public interface App_InfoMapper {
 		  	  					@Param("categoryLevel1")String categoryLevel1,
 		  	  					@Param("categoryLevel2")String categoryLevel2,
 		  	  					@Param("categoryLevel3")String categoryLevel3);
-	
+	//查询分类列表
+	public List<App_Info> getCategoryLevel1List(@Param("categoryLevel1")String categoryLevel1);
+	public List<App_Info> getCategoryLevel2List(@Param("categoryLevel2")String categoryLevel2);
+	public List<App_Info> getCategoryLevel3List(@Param("categoryLevel3")String categoryLevel3);
 	
 	
 	//修改APP信息
@@ -36,5 +39,7 @@ public interface App_InfoMapper {
 	public int countCheckingApp();
 
 	public List getCheckingAppList(@Param("page")PageSupport page);
+
+	public int checkApp(@Param("id")Integer id);
 	
 }

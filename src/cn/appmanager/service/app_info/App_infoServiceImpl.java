@@ -18,18 +18,31 @@ import cn.appmanager.tools.PageSupport;
 public class App_infoServiceImpl implements App_infoService {
 	@Resource
 	private App_InfoMapper app_InfoMapper;
-	
+	//查询全部信息
 	public List<App_Info> getInfoList(String softwareName, String status, String flatformId, String categoryLevel1,
 			String categoryLevel2, String categoryLevel3, int start, int pageSize) {
 		return app_InfoMapper.getApp_InfoList(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3, start, pageSize);
 	}
 
-	@Override
+	//查询全部数量
 	public int getApp_InfoCount(String softwareName, String status, String flatformId, String categoryLevel1,
 			String categoryLevel2, String categoryLevel3) {
 		return app_InfoMapper.getApp_InfoCount(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3);
 	}
 
+	
+	//查询分级列表
+	public List<App_Info> getCategoryLevel1List(String categoryLevel1) {
+		return app_InfoMapper.getCategoryLevel1List(categoryLevel1);
+	}
+	public List<App_Info> getCategoryLevel2List(String categoryLevel2) {
+		return app_InfoMapper.getCategoryLevel2List(categoryLevel2);
+	}
+	public List<App_Info> getCategoryLevel3List(String categoryLevel3) {
+		return app_InfoMapper.getCategoryLevel3List(categoryLevel3);
+	}
+	
+	
 
 	//修改APP信息
 	public int updateAppInfo(App_Info app_Info){
@@ -49,6 +62,12 @@ public class App_infoServiceImpl implements App_infoService {
 		page.setPageSize(5);
 		page.setList(this.app_InfoMapper.getCheckingAppList(page));
 		return page;
+	}
+
+	//审核APP
+	public int checkApp(Integer id) {
+		// TODO Auto-generated method stub
+		return this.app_InfoMapper.checkApp(id);
 	}
 
 }
