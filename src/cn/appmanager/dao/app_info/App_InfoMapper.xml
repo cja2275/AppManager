@@ -12,24 +12,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		i.flatformId,
 		(SELECT
 		valueName FROM data_dictionary d WHERE i.flatformId=d.valueId AND
-		typeCode='APP_FLATFORM'),
+		typeCode='APP_FLATFORM') AS flatformName,
 		i.categoryLevel1,
 		(SELECT
-		categoryName FROM app_category c WHERE c.id=i.categoryLevel1),
+		categoryName FROM app_category c WHERE c.id=i.categoryLevel1) AS categoryLevel1Name,
 		i.categoryLevel2,
 		(SELECT categoryName FROM
-		app_category c WHERE c.id=i.categoryLevel2),
+		app_category c WHERE c.id=i.categoryLevel2) AS categoryLevel2Name,
 		i.categoryLevel3,
 		(SELECT categoryName FROM app_category c WHERE
-		c.id=i.categoryLevel3),
+		c.id=i.categoryLevel3) AS categoryLevel2Name,
 		i.status,
 		(SELECT valueName
 		FROM data_dictionary d WHERE i.status=d.valueId AND
-		typeCode='APP_STATUS'),
+		typeCode='APP_STATUS') AS statusName,
 		i.downloads,
 		i.versionId,
 		(SELECT
-		versionNo FROM app_version v WHERE i.versionId=v.id)
+		versionNo FROM app_version v WHERE i.versionId=v.id) AS versionNo
 		FROM
 		app_info i
 
@@ -85,23 +85,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</trim>
 	</select>
 
-
-	<!-- 查询分级列表 -->
-	<select id="getCategoryLevel1List">
-		SELECT categoryName FROM app_category c WHERE categoryCode LIKE CONCAT ('%','ALL_','%')
-	</select>
-	<select id="getCategoryLevel2List">
-		SELECT categoryName FROM app_category c 
-		WHERE categoryCode LIKE CONCAT ('%','APP_','%')AND parentId=1 OR categoryCode LIKE CONCAT ('%','GAME_','%')AND parentId=2
-		<if test="">
-		
-		</if>
-	</select>
-	<select id="getCategoryLevel3List">
-		SELECT categoryName FROM app_category c 
-		WHERE categoryCode LIKE CONCAT ('%','APP_','%')AND parentId=3 OR parentId=4 
-		OR categoryCode LIKE CONCAT ('%','GAME_','%')AND parentId=19 OR parentId=20 OR parentId=21 OR parentId=22
-	</select>
 
 
 

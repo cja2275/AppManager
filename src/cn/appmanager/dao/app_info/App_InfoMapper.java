@@ -10,25 +10,22 @@ import cn.appmanager.tools.PageSupport;
 public interface App_InfoMapper {
 	//查看全部信息
 	public List<App_Info> getApp_InfoList(@Param("softwareName")String softwareName,
-			  						  	  @Param("status")String status,
-			  						  	  @Param("flatformId")String flatformId,
-			  						  	  @Param("categoryLevel1")String categoryLevel1,
-			  						  	  @Param("categoryLevel2")String categoryLevel2,
-			  						  	  @Param("categoryLevel3")String categoryLevel3,
-			  						  	  @Param("start")int start,
-			  						  	  @Param("pageSize")int pageSize);
+			  						  	  @Param("status")Integer status,
+			  						  	  @Param("flatformId")Integer flatformId,
+			  						  	  @Param("categoryLevel1")Integer categoryLevel1,
+			  						  	  @Param("categoryLevel2")Integer categoryLevel2,
+			  						  	  @Param("categoryLevel3")Integer categoryLevel3,
+			  						  	  @Param("start")Integer start,
+			  						  	  @Param("pageSize")Integer pageSize);
 	
 	//查询总数
 	public int getApp_InfoCount(@Param("softwareName")String softwareName,
-		  	  					@Param("status")String status,
-		  	  					@Param("flatformId")String flatformId,
-		  	  					@Param("categoryLevel1")String categoryLevel1,
-		  	  					@Param("categoryLevel2")String categoryLevel2,
-		  	  					@Param("categoryLevel3")String categoryLevel3);
-	//查询分类列表
-	public List<App_Info> getCategoryLevel1List(@Param("categoryLevel1")String categoryLevel1);
-	public List<App_Info> getCategoryLevel2List(@Param("categoryLevel2")String categoryLevel2);
-	public List<App_Info> getCategoryLevel3List(@Param("categoryLevel3")String categoryLevel3);
+		  	  					@Param("status")Integer status,
+		  	  					@Param("flatformId")Integer flatformId,
+		  	  					@Param("categoryLevel1")Integer categoryLevel1,
+		  	  					@Param("categoryLevel2")Integer categoryLevel2,
+		  	  					@Param("categoryLevel3")Integer categoryLevel3);
+
 	
 	
 	//修改APP信息

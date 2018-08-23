@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import cn.appmanager.pojo.App_Category;
 import cn.appmanager.pojo.App_Info;
+import cn.appmanager.pojo.Data_Dictionary;
+import cn.appmanager.service.app_category.App_categoryService;
 import cn.appmanager.service.app_info.App_infoService;
+import cn.appmanager.service.data_dictionary.Data_dictionaryService;
 import cn.appmanager.tools.Constants;
 import cn.appmanager.tools.PageSupport;
 
@@ -21,6 +24,11 @@ import cn.appmanager.tools.PageSupport;
 public class UserController {
 	@Resource
 	private App_infoService app_infoService;
+	@Resource
+	private Data_dictionaryService data_dictionaryService;
+	@Resource
+	private App_categoryService app_categoryService;
+	
 	
 
 	
@@ -28,15 +36,17 @@ public class UserController {
 	@RequestMapping(value="/App_InfoList.html")
 	public String getApp_InfoList(Model model,
 								  @RequestParam(value="softwareName",required=false)String softwareName,
-								  @RequestParam(value="status",required=false)String status,
-								  @RequestParam(value="flatformId",required=false)String flatformId,
-								  @RequestParam(value="categoryLevel1",required=false)String categoryLevel1,
-								  @RequestParam(value="categoryLevel2",required=false)String categoryLevel2,
-								  @RequestParam(value="categoryLevel3",required=false)String categoryLevel3,
+								  @RequestParam(value="status",required=false)String _status,
+								  @RequestParam(value="flatformId",required=false)String _flatformId,
+								  @RequestParam(value="categoryLevel1",required=false)String _categoryLevel1,
+								  @RequestParam(value="categoryLevel2",required=false)String _categoryLevel2,
+								  @RequestParam(value="categoryLevel3",required=false)String _categoryLevel3,
 								  @RequestParam(value="start",required=false)int start,
 								  @RequestParam(value="pageIndex",required=false)String pageIndex){
 		
 		List<App_Info> app_InfoList = null;
+		List<Data_Dictionary> statusList=null;
+		List<Data_Dictionary> flatformIdList=null;
 		List<App_Category> categoryLevel1List=null;
 		List<App_Category> categoryLevel2List=null;
 		List<App_Category> categoryLevel3List=null;
@@ -47,25 +57,39 @@ public class UserController {
 		if (softwareName == null) {
 			softwareName = "";
 		}
-		if (status == null) {
-			status = "";
-		}
-		if (flatformId == null) {
-			flatformId = "";
-		}
-		if (categoryLevel1 == null) {
-			categoryLevel1 = "";
-		}
-		if (categoryLevel2 == null) {
-			categoryLevel2 = "";
-		}
-		if (categoryLevel3 == null) {
-			categoryLevel3 = "";
-		}
+
 		if (pageIndex!= null) {
 			currentPageNo = Integer.valueOf(pageIndex);
-
 		}
+		
+		Integer status=null;
+		if(_status!=null && !("").equals(_status)){
+			status=Integer.parseInt(_status);
+		}
+		Integer flatformId=null;
+		if(_flatformId!=null && !("").equals(_flatformId)){
+			flatformId=Integer.parseInt(_flatformId);
+		}
+		
+		Integer categoryLevel1=null;
+		if(_categoryLevel1!=null && !("").equals(_categoryLevel1)){
+			categoryLevel1=Integer.parseInt(_categoryLevel1);
+		}
+		
+		Integer categoryLevel2=null;
+		if(_categoryLevel2!=null && !("").equals(_categoryLevel2)){
+			categoryLevel2=Integer.parseInt(_categoryLevel2);
+		}
+		
+		Integer categoryLevel3=null;
+		if(_categoryLevel3!=null && !("").equals(_categoryLevel3)){
+			categoryLevel3=Integer.parseInt(_categoryLevel3);
+		}
+		
+		
+		
+		
+		
 		// 信息总数
 		int totalCount = app_infoService.getApp_InfoCount(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3);
 		// 总页数
@@ -85,10 +109,13 @@ public class UserController {
 		int from = (currentPageNo - 1) * pageSize;
 
 		app_InfoList = app_infoService.getInfoList(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3, start, pageSize);
+		statusList=data_dictionaryService.getData_DictionaryList("APP_STATUS");
+		flatformIdList=data_dictionaryService.getData_DictionaryList("APP_FLATFORM");
+		categoryLevel1List=app_categoryService.getCategoryLevelListByParentId(null);
 		model.addAttribute("app_InfoList", app_InfoList);
+		model.addAttribute("statusList",statusList);
+		model.addAttribute("flatformIdList",flatformIdList);
 		model.addAttribute("categoryLevel1List",categoryLevel1List);
-		model.addAttribute("categoryLevel2List",categoryLevel2List);
-		model.addAttribute("categoryLevel3List",categoryLevel3List);
 		model.addAttribute("softwareName", softwareName);
 		model.addAttribute("status", status);
 		model.addAttribute("flatformId", flatformId);

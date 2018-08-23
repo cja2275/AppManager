@@ -19,29 +19,19 @@ public class App_infoServiceImpl implements App_infoService {
 	@Resource
 	private App_InfoMapper app_InfoMapper;
 	//查询全部信息
-	public List<App_Info> getInfoList(String softwareName, String status, String flatformId, String categoryLevel1,
-			String categoryLevel2, String categoryLevel3, int start, int pageSize) {
+	public List<App_Info> getInfoList(String softwareName, Integer status, Integer flatformId, Integer categoryLevel1,
+			Integer categoryLevel2, Integer categoryLevel3, Integer start, Integer pageSize) {
 		return app_InfoMapper.getApp_InfoList(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3, start, pageSize);
 	}
 
 	//查询全部数量
-	public int getApp_InfoCount(String softwareName, String status, String flatformId, String categoryLevel1,
-			String categoryLevel2, String categoryLevel3) {
+	public int getApp_InfoCount(String softwareName, Integer status, Integer flatformId, Integer categoryLevel1,
+			Integer categoryLevel2, Integer categoryLevel3) {
 		return app_InfoMapper.getApp_InfoCount(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3);
 	}
 
 	
-	//查询分级列表
-	public List<App_Info> getCategoryLevel1List(String categoryLevel1) {
-		return app_InfoMapper.getCategoryLevel1List(categoryLevel1);
-	}
-	public List<App_Info> getCategoryLevel2List(String categoryLevel2) {
-		return app_InfoMapper.getCategoryLevel2List(categoryLevel2);
-	}
-	public List<App_Info> getCategoryLevel3List(String categoryLevel3) {
-		return app_InfoMapper.getCategoryLevel3List(categoryLevel3);
-	}
-	
+
 	
 
 	//修改APP信息
