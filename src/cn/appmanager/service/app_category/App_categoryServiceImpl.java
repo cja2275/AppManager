@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import cn.appmanager.dao.app_categpry.App_CategoryMapper;
+import cn.appmanager.dao.app_category.App_CategoryMapper;
 import cn.appmanager.pojo.App_Category;
 
 @Service

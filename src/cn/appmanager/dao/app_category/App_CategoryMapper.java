@@ -1,4 +1,4 @@
-package cn.appmanager.dao.app_categpry;
+package cn.appmanager.dao.app_category;
 
 import java.util.List;
 
