@@ -6,7 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.annotations.Param;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.appmanager.pojo.Backend_User;
 import cn.appmanager.pojo.Div_User;
@@ -28,6 +30,7 @@ public class LoginController {
 		return "login";
 	}
 	
+	//开发用户登录
 	@RequestMapping(value="/devUserlogin")
 	public String devUserlogin(HttpServletRequest request,Div_User div_user ){
 		int result = this.dev_userService.userlogin(div_user);
@@ -35,8 +38,10 @@ public class LoginController {
 			request.getSession().setAttribute("login", "divUser");
 			return "";
 		}
-		return null;
+		return "";
 	}
+	
+	//后台用户登录
 	@RequestMapping(value="/backUserlogin")
 	public String backUserlogin(HttpServletRequest request,Backend_User backend_User ){
 		int result = this.backend_userService.login(backend_User);
@@ -44,6 +49,13 @@ public class LoginController {
 			request.getSession().setAttribute("login", "backendUser");
 			return "";
 		}
-		return null;
+		return "";
+	}
+	
+	//注销
+	@RequestMapping(value="/cancel")
+	public String cancel(@RequestBody HttpServletRequest request){
+		request.getSession().removeAttribute("login");
+		return "true";
 	}
 }
