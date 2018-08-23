@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and typeCode=#{typeCode}
 			</if>
 		</trim>
+	</select>
 	<!--查询平台-->
 	<select id="getPlatformList" resultType="Data_Dictionary">
 	 SELECT valueName ,valueId FROM data_dictionary 
