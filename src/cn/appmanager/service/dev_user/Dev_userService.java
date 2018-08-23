@@ -1,4 +1,4 @@
-package cn.appmanager.service.dev_user.Dev_userService;
+package cn.appmanager.service.dev_user;
 
 import cn.appmanager.pojo.Div_User;
 
