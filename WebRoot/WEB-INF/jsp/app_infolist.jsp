@@ -28,25 +28,31 @@
 		<form action="${pageContext.request.contextPath }/app_infolist.html"
 			method="post">
 			软件名称：<input name=softwareName type="text" value="${softwareName}">
-			APP状态：<select id="status" name="status"><option value="">---请选择---</option>
+			APP状态：<select id="status" name="status">
+					<option value="">---请选择---</option>
 			        <option value="status">待审核</option>
 			        <option value="status">审核通过</option>
 			        <option value="status">审核未通过</option>
 			        <option value="status">已上架</option>
 			        <option value="status">已下架</option></select>
-			所属平台：<select id="flatformId" name="flatformId"><option value="">---请选择---</option>
+			所属平台：<select id="flatformId" name="flatformId">
+					<option value="">---请选择---</option>
 			        <option value="flatformId">手机</option>
 			        <option value="flatformId">平板</option>
 			        <option value="flatformId">通用</option></select>
-			一级分类：<select name="categoryLevel1">
-									<c:if test="${statusList != null }">
-									   <option value="">--请选择--</option>
-									   <c:forEach var="dataDictionary" items="${statusList}">
-									   		<option <c:if test="${dataDictionary.valueId == queryStatus }">selected="selected"</c:if>
-									   		value="${dataDictionary.valueId}">${dataDictionary.valueName}</option>
-									   </c:forEach>
-									</c:if>
-        						</select>
+			一级分类：<select id="categoryLevel1" name="categoryLevel1">
+						<c:if test="${categoryLevel1List != null }">
+						   <option value="0">--请选择--</option>
+						   <c:forEach var="categoryLevel1" items="${categoryLevel1List}">
+						   		<option <c:if test="${role.id == queryUserRole }">selected="selected"</c:if>
+						   		value="${role.id}">${role.roleName}</option>
+						   </c:forEach>
+						</c:if>
+	        		</select>
+			
+			
+			
+			</select>
 			        
 			
 			<button type="submit"

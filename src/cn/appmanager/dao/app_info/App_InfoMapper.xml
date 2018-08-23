@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="cn.appmanager.dao.app_info.App_InfoMapper">
 
 	<!-- 查询全部信息 -->
-	<select id="getApp_InfoList" resultType="Standard">
+	<select id="getApp_InfoList" resultType="App_Info">
 		SELECT i.softwareName,i.APKName,i.softwareSize,
 		i.flatformId,
 		(SELECT
@@ -86,8 +86,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
-
-
+	<!-- 查询分级列表 -->
+	<select id="getCategoryLevel1List">
+		SELECT categoryName FROM app_category c WHERE categoryCode LIKE CONCAT ('%','ALL_','%')
+	</select>
+	<select id="getCategoryLevel2List">
+		SELECT categoryName FROM app_category c 
+		WHERE categoryCode LIKE CONCAT ('%','APP_','%')AND parentId=1 OR categoryCode LIKE CONCAT ('%','GAME_','%')AND parentId=2
+	</select>
+	<select id="getCategoryLevel3List">
+		SELECT categoryName FROM app_category c 
+		WHERE categoryCode LIKE CONCAT ('%','APP_','%')AND parentId=3 OR parentId=4 
+		OR categoryCode LIKE CONCAT ('%','GAME_','%')AND parentId=19 OR parentId=20 OR parentId=21 OR parentId=22
+	</select>
 
 
 
@@ -97,6 +108,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
   
+
   <!--   修改INFO基本信息 -->
     <insert id="updateAppInfo" parameterType="app_Info" >
     	UPDATE app_info  a SET  a.softwareName=#{app_Info.softwareName} , 
@@ -105,7 +117,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	a.`flatformId`=#{app_Info.flatformId},a.`categoryLevel1`=#{app_Info.categoryLevel1},
     	a.`categoryLevel2`=#{app_Info.categoryLevel2},a.`categoryLevel3`=#{app_Info.categoryLevel3},
     	a.`appInfo`=#{app_Info.appInfo},a.`logoPicPath`=#{app_Info.logoPicPath}
- 		WHERE id=59;
+ 		WHERE #{app_Info.appInfo.id};
     </insert>
    <!-- 查询app信息byId -->
    <select id="appInfoById" resultType="App_Info">
@@ -115,7 +127,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     FROM app_info 
     WHERE id=#{id}
    </select>
-   
 
 </mapper>
 

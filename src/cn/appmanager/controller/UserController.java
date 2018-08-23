@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import cn.appmanager.pojo.App_Category;
 import cn.appmanager.pojo.App_Info;
 import cn.appmanager.service.app_info.App_infoService;
 import cn.appmanager.tools.Constants;
@@ -42,6 +43,9 @@ public class UserController {
 								  @RequestParam(value="pageIndex",required=false)String pageIndex){
 		
 		List<App_Info> app_InfoList = null;
+		List<App_Category> categoryLevel1List=null;
+		List<App_Category> categoryLevel2List=null;
+		List<App_Category> categoryLevel3List=null;
 		// 设置页面容量
 		int pageSize = Constants.pageSize;
 		// 当前页码
@@ -88,6 +92,9 @@ public class UserController {
 
 		app_InfoList = app_infoService.getInfoList(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3, start, pageSize);
 		model.addAttribute("app_InfoList", app_InfoList);
+		model.addAttribute("categoryLevel1List",categoryLevel1List);
+		model.addAttribute("categoryLevel2List",categoryLevel2List);
+		model.addAttribute("categoryLevel3List",categoryLevel3List);
 		model.addAttribute("softwareName", softwareName);
 		model.addAttribute("status", status);
 		model.addAttribute("flatformId", flatformId);

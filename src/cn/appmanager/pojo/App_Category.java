@@ -2,7 +2,7 @@ package cn.appmanager.pojo;
 
 import java.util.Date;
 
-public class App_Categpry {
+public class App_Category {
 	  private Integer id;
 	  private String categoryCode;
 	  private String categoryName;
