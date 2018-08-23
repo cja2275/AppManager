@@ -5,7 +5,86 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.appmanager.dao.app_info.App_InfoMapper">
-  
+
+	<!-- 查询全部信息 -->
+	<select id="getApp_InfoList" resultType="Standard">
+		SELECT i.softwareName,i.APKName,i.softwareSize,
+		i.flatformId,
+		(SELECT
+		valueName FROM data_dictionary d WHERE i.flatformId=d.valueId AND
+		typeCode='APP_FLATFORM'),
+		i.categoryLevel1,
+		(SELECT
+		categoryName FROM app_category c WHERE c.id=i.categoryLevel1),
+		i.categoryLevel2,
+		(SELECT categoryName FROM
+		app_category c WHERE c.id=i.categoryLevel2),
+		i.categoryLevel3,
+		(SELECT categoryName FROM app_category c WHERE
+		c.id=i.categoryLevel3),
+		i.status,
+		(SELECT valueName
+		FROM data_dictionary d WHERE i.status=d.valueId AND
+		typeCode='APP_STATUS'),
+		i.downloads,
+		i.versionId,
+		(SELECT
+		versionNo FROM app_version v WHERE i.versionId=v.id)
+		FROM
+		app_info i
+
+
+
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="softwareName!=null and softwareName!=''">
+				and i.softwareName like CONCAT ('%',#{softwareName},'%')
+			</if>
+			<if test="status!=null and status!=''">
+				and i.status=#{status}
+			</if>
+			<if test="flatformId!=null and flatformId!=''">
+				and i.flatformId=#{flatformId}
+			</if>
+			<if test="categoryLevel1!=null and categoryLevel1!=''">
+				and i.categoryLevel1=#{categoryLevel1}
+			</if>
+			<if test="categoryLevel2!=null and categoryLevel2!=''">
+				and i.categoryLevel2=#{categoryLevel2}
+			</if>
+			<if test="categoryLevel3!=null and categoryLevel3!=''">
+				and i.categoryLevel3=#{categoryLevel3}
+			</if>
+		</trim>
+		LIMIT #{start},#{pageSize}
+	</select>
+
+
+
+	<!-- 查询信息总数 -->
+	<select id="getApp_InfoCount" resultType="int">
+		SELECT COUNT(1) FROM app_info i
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="softwareName!=null and softwareName!=''">
+				and i.softwareName like CONCAT ('%',#{softwareName},'%')
+			</if>
+			<if test="status!=null and status!=''">
+				and i.status=#{status}
+			</if>
+			<if test="flatformId!=null and flatformId!=''">
+				and i.flatformId=#{flatformId}
+			</if>
+			<if test="categoryLevel1!=null and categoryLevel1!=''">
+				and i.categoryLevel1=#{categoryLevel1}
+			</if>
+			<if test="categoryLevel2!=null and categoryLevel2!=''">
+				and i.categoryLevel2=#{categoryLevel2}
+			</if>
+			<if test="categoryLevel3!=null and categoryLevel3!=''">
+				and i.categoryLevel3=#{categoryLevel3}
+			</if>
+		</trim>
+	</select>
+
   <!--   修改INFO基本信息 -->
     <insert id="updateAppInfo" parameterType="app_Info" >
     	UPDATE app_info  a SET  a.softwareName=#{app_Info.softwareName} , 
@@ -14,7 +93,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	a.`flatformId`=#{app_Info.flatformId},a.`categoryLevel1`=#{app_Info.categoryLevel1},
     	a.`categoryLevel2`=#{app_Info.categoryLevel2},a.`categoryLevel3`=#{app_Info.categoryLevel3},
     	a.`appInfo`=#{app_Info.appInfo},a.`logoPicPath`=#{app_Info.logoPicPath}
- 		WHERE id=59;
+ 		WHERE #{app_Info.appInfo.id};
     </insert>
    <!-- 查询app信息byId -->
    <select id="appInfoById" resultType="App_Info">
@@ -26,4 +105,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
    
 </mapper>
+
 
