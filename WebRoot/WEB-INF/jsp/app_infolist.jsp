@@ -38,7 +38,15 @@
 			        <option value="flatformId">手机</option>
 			        <option value="flatformId">平板</option>
 			        <option value="flatformId">通用</option></select>
-			一级分类：
+			一级分类：<select name="categoryLevel1">
+									<c:if test="${statusList != null }">
+									   <option value="">--请选择--</option>
+									   <c:forEach var="dataDictionary" items="${statusList}">
+									   		<option <c:if test="${dataDictionary.valueId == queryStatus }">selected="selected"</c:if>
+									   		value="${dataDictionary.valueId}">${dataDictionary.valueName}</option>
+									   </c:forEach>
+									</c:if>
+        						</select>
 			        
 			
 			<button type="submit"
