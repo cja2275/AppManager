@@ -51,4 +51,10 @@ public class App_infoServiceImpl implements App_infoService {
 		return page;
 	}
 
+	//审核APP
+	public int checkApp(Integer id) {
+		// TODO Auto-generated method stub
+		return this.app_InfoMapper.checkApp(id);
+	}
+
 }

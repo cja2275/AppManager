@@ -37,5 +37,7 @@ public interface App_InfoMapper {
 	public int countCheckingApp();
 
 	public List getCheckingAppList(@Param("page")PageSupport page);
+
+	public int checkApp(@Param("id")Integer id);
 	
 }
