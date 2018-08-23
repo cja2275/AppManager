@@ -41,45 +41,45 @@
 					</c:forEach>
 				</select>
 			</div>
-			
+
 			<div>
 				所属平台：<select id="flatformId" name="flatformId">
 					<c:if test="${flatformIdList}!=null"></c:if>
-						<option>---请选择---</option>
-						<c:forEach var="data_Dictionary" items="${flatformIdList }">
-							<c:if test="${Data_Dictionary=flatformId }">selected="selected"</c:if>
-							<option value="${dataDictionary.valueId}">${dataDictionary.valueName}</option>
-						</c:forEach>
+					<option>---请选择---</option>
+					<c:forEach var="data_Dictionary" items="${flatformIdList }">
+						<c:if test="${Data_Dictionary=flatformId }">selected="selected"</c:if>
+						<option value="${dataDictionary.valueId}">${dataDictionary.valueName}</option>
+					</c:forEach>
 				</select>
 			</div>
 			<div>
 				一级分类：<select id="categoryLevel1" name="categoryLevel1">
 					<c:if test="${categoryLevel1List}!=null"></c:if>
-						<option>---请选择---</option>
-						<c:forEach var="app_Category" items="${categoryLevel1List }">
-							<c:if test="${app_Category.id=categoryLevel1 }">selected="selected"</c:if>
-							<option value="${appCategory.id}">${app_Category.categoryName}</option>
-						</c:forEach>
+					<option>---请选择---</option>
+					<c:forEach var="app_Category" items="${categoryLevel1List }">
+						<c:if test="${app_Category.id=categoryLevel1 }">selected="selected"</c:if>
+						<option value="${appCategory.id}">${app_Category.categoryName}</option>
+					</c:forEach>
 				</select>
 			</div>
 			<div>
 				二级分类：<select id="categoryLevel2" name="categoryLevel2">
 					<c:if test="${categoryLevel2List}!=null"></c:if>
-						<option>---请选择---</option>
-						<c:forEach var="app_Category" items="${categoryLevel2List }">
-							<c:if test="${app_Category.id=categoryLevel2 }">selected="selected"</c:if>
-							<option value="${appCategory.id}">${app_Category.categoryName}</option>
-						</c:forEach>
+					<option>---请选择---</option>
+					<c:forEach var="app_Category" items="${categoryLevel2List }">
+						<c:if test="${app_Category.id=categoryLevel2 }">selected="selected"</c:if>
+						<option value="${appCategory.id}">${app_Category.categoryName}</option>
+					</c:forEach>
 				</select>
 			</div>
 			<div>
 				三级分类：<select id="categoryLevel3" name="categoryLevel3">
 					<c:if test="${categoryLevel3List}!=null"></c:if>
-						<option>---请选择---</option>
-						<c:forEach var="app_Category" items="${categoryLevel3List }">
-							<c:if test="${app_Category.id=categoryLevel3 }">selected="selected"</c:if>
-							<option value="${appCategory.id}">${app_Category.categoryName}</option>
-						</c:forEach>
+					<option>---请选择---</option>
+					<c:forEach var="app_Category" items="${categoryLevel3List }">
+						<c:if test="${app_Category.id=categoryLevel3 }">selected="selected"</c:if>
+						<option value="${appCategory.id}">${app_Category.categoryName}</option>
+					</c:forEach>
 				</select>
 			</div>
 
@@ -104,38 +104,44 @@
 				<th>操作</th>
 			</tr>
 			<tr>
-				<c:forEach var=app_Info items="${app_InfoList}">
-					<tr>
-						<td>${app_Info.softwareName}</td>
-						<td>${app_Info.APKName}</td>
-						<td>${app_Info.softwareSize}</td>
-						<td>${app_Info.flatformName}</td>
-						<td>${app_Info.categoryLevel1Name }->
-							${app_Info.categoryLevel2Name } -> ${app_Info.categoryLevel3Name }</td>
-						<td>${app_Info.statusName }</td>
-						<td>${app_Info.downloads }</td>
-						<td>${app_Info.versionNo }</td>
-						<td><input type="button" value="点击操作"></td>
-					</tr>
-				</c:forEach>
+				<c:forEach var="app_Info" items="${app_InfoList}">
+			<tr>
+				<td>${app_Info.softwareName}</td>
+				<td>${app_Info.APKName}</td>
+				<td>${app_Info.softwareSize}</td>
+				<td>${app_Info.flatformName}</td>
+				<td>${app_Info.categoryLevel1Name }</td>
+				<td>${app_Info.categoryLevel2Name }</td>
+				<td>${app_Info.categoryLevel3Name }</td>
+				<td>${app_Info.statusName }</td>
+				<td>${app_Info.downloads }</td>
+				<td>${app_Info.versionNo }</td>
+				<td><input type="button" value="点击操作"></td>
+			</tr>
+			</c:forEach>
 			</tr>
 		</table>
 	</div>
+
+	<div>共${pages.totalCount }条记录
+		${pages.currentPageNo }/${pages.totalPageCount }页
+	</div>
+
 	<div>
-		<c:if test="${pages.currentPageNo > 1}">
-			<li><a href="javascript:page_nav(document.forms[0],1);">首页</a></li>
-			<li><a
-				href="javascript:page_nav(document.forms[0],${pages.currentPageNo-1});">上一页</a>
-			</li>
-		</c:if>
-		<c:if test="${pages.currentPageNo < pages.totalPageCount }">
-			<li><a
-				href="javascript:page_nav(document.forms[0],${pages.currentPageNo+1 });">下一页</a>
-			</li>
-			<li><a
-				href="javascript:page_nav(document.forms[0],${pages.totalPageCount });">最后一页</a>
-			</li>
-		</c:if>
+			<c:if test="${pages.currentPageNo > 1}">
+				<li><a href="${pageContext.request.contextPath }/user/app_infolist.html?pageIndex=1">首页</a></li>
+				<li><a
+					href="${pageContext.request.contextPath }/user/app_infolist.html?pageIndex=${currentPageNo-1}">上一页</a>
+				</li>
+			</c:if>
+			<c:if test="${pages.currentPageNo < pages.totalPageCount }">
+				<li><a
+					href="${pageContext.request.contextPath }/user/app_infolist.html?pageIndex=${currentPageNo+1 }">下一页</a>
+				</li>
+				<li><a
+					href="${pageContext.request.contextPath }/user/app_infolist.html?pageIndex=${totalPageCount }">最后一页</a>
+				</li>
+			</c:if>
 	</div>
 
 

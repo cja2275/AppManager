@@ -20,8 +20,8 @@ public class App_infoServiceImpl implements App_infoService {
 	private App_InfoMapper app_InfoMapper;
 	//查询全部信息
 	public List<App_Info> getInfoList(String softwareName, Integer status, Integer flatformId, Integer categoryLevel1,
-			Integer categoryLevel2, Integer categoryLevel3, Integer start, Integer pageSize) {
-		return app_InfoMapper.getApp_InfoList(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3, start, pageSize);
+			Integer categoryLevel2, Integer categoryLevel3, Integer currentPageNo, Integer pageSize) {
+		return app_InfoMapper.getApp_InfoList(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3, currentPageNo, pageSize);
 	}
 
 	//查询全部数量

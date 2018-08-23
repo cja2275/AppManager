@@ -33,7 +33,7 @@ public class UserController {
 
 	
 	//查看全部信息
-	@RequestMapping(value="/App_InfoList.html")
+	@RequestMapping(value="/app_infolist.html")
 	public String getApp_InfoList(Model model,
 								  @RequestParam(value="softwareName",required=false)String softwareName,
 								  @RequestParam(value="status",required=false)String _status,
@@ -41,7 +41,7 @@ public class UserController {
 								  @RequestParam(value="categoryLevel1",required=false)String _categoryLevel1,
 								  @RequestParam(value="categoryLevel2",required=false)String _categoryLevel2,
 								  @RequestParam(value="categoryLevel3",required=false)String _categoryLevel3,
-								  @RequestParam(value="start",required=false)int start,
+								 // @RequestParam(value="start",required=false)int start,
 								  @RequestParam(value="pageIndex",required=false)String pageIndex){
 		
 		List<App_Info> app_InfoList = null;
@@ -106,9 +106,8 @@ public class UserController {
 			currentPageNo = totalPageCount;
 		}
 
-		int from = (currentPageNo - 1) * pageSize;
 
-		app_InfoList = app_infoService.getInfoList(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3, start, pageSize);
+		app_InfoList = app_infoService.getInfoList(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3,currentPageNo,pageSize);
 		statusList=data_dictionaryService.getData_DictionaryList("APP_STATUS");
 		flatformIdList=data_dictionaryService.getData_DictionaryList("APP_FLATFORM");
 		categoryLevel1List=app_categoryService.getCategoryLevelListByParentId(null);
@@ -125,6 +124,7 @@ public class UserController {
 		model.addAttribute("currentPageNo", currentPageNo);
 		model.addAttribute("totalPageCount", totalPageCount);
 		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("pages",pages);
 		return "app_infolist";
 	}
 		

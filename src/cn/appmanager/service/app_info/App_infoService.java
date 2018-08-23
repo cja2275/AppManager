@@ -10,7 +10,7 @@ import cn.appmanager.tools.PageSupport;
 public interface App_infoService {
 	// 查询全部信息
 	public List<App_Info> getInfoList(String softwareName, Integer status, Integer flatformId, Integer categoryLevel1,
-			Integer categoryLevel2, Integer categoryLevel3, Integer start, Integer pageSize);
+			Integer categoryLevel2, Integer categoryLevel3, Integer currentPageNo, Integer pageSize);
 
 	// 查询总数量
 	public int getApp_InfoCount(String softwareName, Integer status, Integer flatformId, Integer categoryLevel1,

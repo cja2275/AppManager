@@ -15,7 +15,7 @@ public interface App_InfoMapper {
 			  						  	  @Param("categoryLevel1")Integer categoryLevel1,
 			  						  	  @Param("categoryLevel2")Integer categoryLevel2,
 			  						  	  @Param("categoryLevel3")Integer categoryLevel3,
-			  						  	  @Param("start")Integer start,
+			  						  	  @Param("start")Integer currentPageNo,
 			  						  	  @Param("pageSize")Integer pageSize);
 	
 	//查询总数

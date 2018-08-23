@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		app_category c WHERE c.id=i.categoryLevel2) AS categoryLevel2Name,
 		i.categoryLevel3,
 		(SELECT categoryName FROM app_category c WHERE
-		c.id=i.categoryLevel3) AS categoryLevel2Name,
+		c.id=i.categoryLevel3) AS categoryLevel3Name,
 		i.status,
 		(SELECT valueName
 		FROM data_dictionary d WHERE i.status=d.valueId AND
