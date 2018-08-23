@@ -28,19 +28,19 @@
 	<form
 		action="${pageContext.request.contextPath }/user/updateApp_InfoSave.html">
 		<div>
-			软件名称: <input type="text" value="${app_Info.softwareName }">
+			软件名称: <input type="text" value="${app_Info.softwareName }" name="softwareName">
 		</div>
 		<div>
-			APK名称: <input type="text" value="${app_Info.APKName }">
+			APK名称: <input type="text" value="${app_Info.APKName }" name="APKName">
 		</div>
 		<div>
-			支持ROM: <input type="text" value="${app_Info.supportROM }">
+			支持ROM: <input type="text" value="${app_Info.supportROM }" name="supportROM">
 		</div>
 		<div>
-			界面语言: <input type="text" value="${app_Info.interfaceLanguage }">
+			界面语言: <input type="text" value="${app_Info.interfaceLanguage }" name="interfaceLanguage">
 		</div>
 		<div>
-			软件大小: <input type="text" value="${app_Info.softwareSize }">
+			软件大小: <input type="text" value="${app_Info.softwareSize }" name="">
 		</div>
 		<div>
 			下载次数: <input type="text" value="${app_Info.downloads}">
@@ -51,19 +51,19 @@
 			</select>
 		</div>
 		<div>
-			一级分类: <input type="text" value="${ }">
+			一级分类: <input type="text" value="">
 		</div>
 		<div>
-			二级分类: <input type="text" value="${ }">
+			二级分类: <input type="text" value="">
 		</div>
 		<div>
-			三级分类: <input type="text" value="${ }">
+			三级分类: <input type="text" value="">
 		</div>
 		<div>
-			APP状态: <input type="text" value="${ }">
+			APP状态: <input type="text" value="">
 		</div>
 		<div>
-			应用简介: <input type="text" value="${ }">
+			应用简介: <input type="text" value="">
 		</div>
 		<div>
 			<input type="submit" value="提交">

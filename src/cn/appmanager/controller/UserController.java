@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import cn.appmanager.pojo.App_Category;
 import cn.appmanager.pojo.App_Info;
+import cn.appmanager.pojo.Data_Dictionary;
 import cn.appmanager.service.app_info.App_infoService;
+import cn.appmanager.service.data_dictionary.Data_dictionaryService;
 import cn.appmanager.tools.Constants;
 import cn.appmanager.tools.PageSupport;
 
@@ -21,7 +23,8 @@ import cn.appmanager.tools.PageSupport;
 public class UserController {
 	@Resource
 	private App_infoService app_infoService;
-	
+	@Resource
+	private Data_dictionaryService data_dictionaryService;
 
 	
 	//查看全部信息
@@ -120,6 +123,10 @@ public class UserController {
 		model.addAttribute("id",app_Info.getId());
 		return "updateApp";
 	}
-	
-	
+	//显示平台列表
+	@RequestMapping(value="/getplatformlist.json")
+	public List<Data_Dictionary> getPlatformList(){
+		List<Data_Dictionary> list=data_dictionaryService.getPlatformList();
+		return list;
+	}
 }

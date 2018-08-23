@@ -6,7 +6,7 @@ public class App_Info {
 
 	  private Integer id;                 //主键id                                                                                              
 	  private String softwareName;        //软件名称                                                                                            
-	  private String APKName;             //APK名称（唯一）                                                                                     
+	  private String aPKName;             //APK名称（唯一）                                                                                     
 	  private String supportROM;          //支持ROM                                                                                             
 	  private String interfaceLanguage;   //界面语言                                                                                            
 	  private Double softwareSize;        //软件大小（单位：M）                                                                                 
@@ -57,11 +57,11 @@ public class App_Info {
 	public void setSoftwareName(String softwareName) {
 		this.softwareName = softwareName;
 	}
-	public String getAPKName() {
-		return APKName;
+	public String getaPKName() {
+		return aPKName;
 	}
-	public void setAPKName(String aPKName) {
-		APKName = aPKName;
+	public void setaPKName(String aPKName) {
+		this.aPKName = aPKName;
 	}
 	public String getSupportROM() {
 		return supportROM;
