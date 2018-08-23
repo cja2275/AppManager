@@ -3,7 +3,6 @@ package cn.appmanager.service.app_info;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 
 
 import cn.appmanager.pojo.App_Info;
@@ -36,5 +35,7 @@ public interface App_infoService {
 	
 	//通过id改变审核状态
 	public int checkApp(Integer id);
+	//删除app信息byID
+		public int delAppInfo(Integer id);
 	
 }

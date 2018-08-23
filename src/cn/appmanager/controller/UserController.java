@@ -110,7 +110,9 @@ public class UserController {
 	@RequestMapping(value="/updateApp_Info.html")
 	public String updateApp_Info(int id,Model model){
 		App_Info a=app_infoService.appInfoById(id);
+		List<Data_Dictionary> list=data_dictionaryService.getPlatformList();
 		model.addAttribute("app_Info",a);
+		model.addAttribute("flatformList",list);
 		return "updateApp";
 	}
 	//保存修改
@@ -129,4 +131,21 @@ public class UserController {
 		List<Data_Dictionary> list=data_dictionaryService.getPlatformList();
 		return list;
 	}
+	//删除app信息
+	@RequestMapping("/delappinfo.html")
+	public String delAppInfo(@RequestParam("id")Integer id ,Model model){
+		int i=app_infoService.delAppInfo(id);
+		if(i>0){
+			model.addAttribute("error","删除成功");
+		}else{
+			model.addAttribute("error","删除失败");
+		}
+		return "app_infolist";
+	}
+	//查看app信息
+	
+	/*public String showAppInfo(@RequestParam("id")Integer id ,Model model){
+		App_Info info=app_infoService.appInfoById(id);
+		String 
+	}*/
 }
