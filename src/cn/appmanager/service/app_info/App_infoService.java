@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.ui.Model;
 
 import cn.appmanager.pojo.App_Info;
+import cn.appmanager.tools.PageSupport;
 
 public interface App_infoService {
 	public List<App_Info> getInfoList(String softwareName,String status,String flatformId,
@@ -21,4 +22,8 @@ public interface App_infoService {
 		//查app信息byID
 	public App_Info appInfoById(Integer id);
 
+	
+	//获得待审核APP列表
+	public PageSupport getCheckingApp(PageSupport page);
+	
 }

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.ui.Model;
 
 import cn.appmanager.pojo.App_Info;
+import cn.appmanager.tools.PageSupport;
 
 public interface App_InfoMapper {
 	//查看全部信息
@@ -32,5 +33,9 @@ public interface App_InfoMapper {
 	public int updateAppInfo(@Param("app_Info")App_Info app_Info);
 	//根据id查app信息
 	public App_Info appInfoById(@Param("id")Integer id);
+
+	public int countCheckingApp();
+
+	public List getCheckingAppList(@Param("page")PageSupport page);
 	
 }
