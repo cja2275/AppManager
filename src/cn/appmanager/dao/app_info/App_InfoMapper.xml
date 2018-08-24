@@ -114,10 +114,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
    
    <!-- 分页查询待审核APP -->
-   <select id="getCheckingAppList" resultType="App_Info">
+   <select id="getCheckingAppList" resultType="App_Info" parameterType="cn.appmanager.tools.PageSupport">
    		select * from app_info
    		where status=1
-   		limit #{(page.currentPageNo-1)*page.pageSize},#{pageSize}
+   		limit ${(page.currentPageNo-1)*page.pageSize},${page.pageSize}
    </select>
    
    <!-- 审核APP -->
