@@ -37,7 +37,7 @@
 					<option>---请选择---</option>
 					<c:forEach var="data_Dictionary" items="${statusList }">
 						<c:if test="${data_Dictionary=status}">selected="selected"</c:if>
-						<option value="${dataDictionary.valueId}">${dataDictionary.valueName}</option>
+						<option value="${data_Dictionary.valueId}">${data_Dictionary.valueName}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -48,7 +48,7 @@
 					<option>---请选择---</option>
 					<c:forEach var="data_Dictionary" items="${flatformIdList }">
 						<c:if test="${Data_Dictionary=flatformId }">selected="selected"</c:if>
-						<option value="${dataDictionary.valueId}">${dataDictionary.valueName}</option>
+						<option value="${data_Dictionary.valueId}">${data_Dictionary.valueName}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -58,7 +58,7 @@
 					<option>---请选择---</option>
 					<c:forEach var="app_Category" items="${categoryLevel1List }">
 						<c:if test="${app_Category.id=categoryLevel1 }">selected="selected"</c:if>
-						<option value="${appCategory.id}">${app_Category.categoryName}</option>
+						<option value="${app_Category.id}">${app_Category.categoryName}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -68,7 +68,7 @@
 					<option>---请选择---</option>
 					<c:forEach var="app_Category" items="${categoryLevel2List }">
 						<c:if test="${app_Category.id=categoryLevel2 }">selected="selected"</c:if>
-						<option value="${appCategory.id}">${app_Category.categoryName}</option>
+						<option value="${app_Category.id}">${app_Category.categoryName}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -78,7 +78,7 @@
 					<option>---请选择---</option>
 					<c:forEach var="app_Category" items="${categoryLevel3List }">
 						<c:if test="${app_Category.id=categoryLevel3 }">selected="selected"</c:if>
-						<option value="${appCategory.id}">${app_Category.categoryName}</option>
+						<option value="${app_Category.id}">${app_Category.categoryName}</option>
 					</c:forEach>
 				</select>
 			</div>
