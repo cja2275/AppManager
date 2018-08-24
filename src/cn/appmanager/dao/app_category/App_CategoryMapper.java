@@ -11,4 +11,5 @@ public interface App_CategoryMapper {
 	//查询分类列表
 	public List<App_Category> getCategoryLevelListByParentId(@Param("parentId")Integer parentId);
 
+
 }

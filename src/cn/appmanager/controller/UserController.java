@@ -1,14 +1,22 @@
 package cn.appmanager.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.support.config.FastJsonConfig;
 
 import cn.appmanager.pojo.App_Category;
 import cn.appmanager.pojo.App_Info;
@@ -29,9 +37,6 @@ public class UserController {
 	private Data_dictionaryService data_dictionaryService;
 	@Resource
 	private App_categoryService app_categoryService;
-	
-	
-
 	
 	//查看全部信息
 	@RequestMapping(value="/app_infolist.html")
@@ -128,9 +133,15 @@ public class UserController {
 		model.addAttribute("pages",pages);
 		return "app_infolist";
 	}
-		
-
 	
+	//接受ajax请求返回分类列表
+	@RequestMapping(value="/abc.html")
+	public List getplatformlistbyparentid(HttpServletRequest request){
+		Integer parentId = Integer.parseInt(request.getParameter("parentId"));
+		return app_categoryService.getCategoryLevelListByParentId(parentId);
+	}
+	
+		
 	//跳转修改APP基本信息
 	@RequestMapping(value="/updateApp_Info.html")
 	public String updateApp_Info(int id,Model model){
@@ -150,12 +161,25 @@ public class UserController {
 		model.addAttribute("id",app_Info.getId());
 		return "updateApp";
 	}
+	
+	
 	//显示平台列表
-	@RequestMapping(value="/getplatformlist.json")
-	public List<Data_Dictionary> getPlatformList(){
-		List<Data_Dictionary> list=data_dictionaryService.getPlatformList();
-		return list;
+	@RequestMapping("/getcategoryname.html")
+	@ResponseBody
+	public void getcategoryname(@RequestParam("id")Integer id,HttpServletResponse response) throws IOException{
+		response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+       
+        List list = app_categoryService.getCategoryLevelListByParentId(id);
+        
+        String json = JSON.toJSONString(list);
+        
+        out.print(json);
+        out.flush();
+        out.close();
 	}
+	
+	
 	//删除app信息
 	@RequestMapping("/delappinfo.html")
 	public String delAppInfo(@RequestParam("id")Integer id ,Model model){
@@ -173,4 +197,6 @@ public class UserController {
 		App_Info info=app_infoService.appInfoById(id);
 		String 
 	}*/
+	
+	
 }

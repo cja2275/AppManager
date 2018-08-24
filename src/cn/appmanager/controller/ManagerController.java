@@ -35,7 +35,7 @@ public class ManagerController {
 		page.setCurrentPageNo(pageIndex);
 		page.setPageSize(5);
 		page=this.app_infoService.getCheckingApp(page);
-		model.addObject(page);
+		model.addObject("page",page);
 		return model;
 	}
 	
@@ -46,8 +46,9 @@ public class ManagerController {
 		Integer id = Integer.parseInt(request.getParameter("id"));
 		if(this.app_infoService.checkApp(id)==1){
 			out.print("checksuccess");
+		}else{
+			out.print("checkfail");
 		}
-		out.print("checkfail");
         out.flush();
         out.close();
 		

@@ -15,8 +15,11 @@
 			<td>审核</td>
 		</tr>
 		<c:forEach items="${page.list}" var="app">
-			<td>${app.softwareName}</td>
-			<td>审核</td>
+			<tr>
+				<td>${app.softwareName}</td>
+				<td><a href="${pageContext.request.contextPath}/manager/checkappbyid?id=${app.id}">审核</a></td>
+			</tr>
+			
 		</c:forEach>
 		
 	</table>

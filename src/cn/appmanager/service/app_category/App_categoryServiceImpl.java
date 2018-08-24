@@ -20,5 +20,6 @@ public class App_categoryServiceImpl implements App_categoryService {
 		return app_categoryMapper.getCategoryLevelListByParentId(parentId);
 	}
 
+
 	
 }

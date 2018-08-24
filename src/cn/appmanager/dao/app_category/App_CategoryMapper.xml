@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 查询分级列表 -->
 	<select id="getCategoryLevelListByParentId" resultType="App_Category">
-		select * from app_category
+		select categoryName,id from app_category
 		<trim prefix="where" prefixOverrides="and|or">
 			<if test="parentId!=null and parentId!=''">
 				and parentId=#{parentId}
@@ -18,6 +18,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</trim>
 	
 	</select>
+	
+	
 	
 	
 	
