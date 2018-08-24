@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.appmanager.dao.app_category.App_CategoryMapper">
+	
+	<!-- 查询分级列表 -->
+	<select id="getCategoryLevelListByParentId" resultType="App_Category">
+		select * from app_category
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="parentId!=null and parentId!=''">
+				and parentId=#{parentId}
+			</if>
+			<if	test="parentId==null">
+				and parentId is null
+			</if>
+		</trim>
+	
+	</select>
+	
+	
+	
+	
+	
+<!-- 	<select id="getCategoryLevel1List">
+		SELECT categoryName FROM app_category c WHERE categoryCode LIKE CONCAT ('%','ALL_','%')
+	</select>
+	<select id="getCategoryLevel2List">
+		SELECT categoryName FROM app_category c 
+		WHERE categoryCode LIKE CONCAT ('%','APP_','%')AND parentId=1 OR categoryCode LIKE CONCAT ('%','GAME_','%')AND parentId=2
+		<if test="">
+		
+		</if>
+	</select>
+	<select id="getCategoryLevel3List">
+		SELECT categoryName FROM app_category c 
+		WHERE categoryCode LIKE CONCAT ('%','APP_','%')AND parentId=3 OR parentId=4 
+		OR categoryCode LIKE CONCAT ('%','GAME_','%')AND parentId=19 OR parentId=20 OR parentId=21 OR parentId=22
+	</select> -->
+	
+</mapper>

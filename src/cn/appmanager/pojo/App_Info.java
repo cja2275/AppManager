@@ -29,20 +29,64 @@ public class App_Info {
 	  private String logoLocPath;         //LOGO图片的服务器存储路径                                                                            
 	  private Integer versionId;          //最新的版本id  
 	  
-	  private App_Categpry app_Categpry;//app所属分类
+	  private App_Category app_Categpry;//app所属分类
 	  private Data_Dictionary data_Dictionary;//所属平台
 	  
 	  
+	  private String flatformName;//所属平台名字
+	  private String categoryLevel1Name;//1级分类名字
+	  private String categoryLevel2Name;//2级分类名字
+	  private String categoryLevel3Name;//3级分类名字
+	  private String statusName;//状态名称
+	  private String versionNo;//最新版本号
+	  
+	  
+	public String getVersionNo() {
+		return versionNo;
+	}
+	public void setVersionNo(String versionNo) {
+		this.versionNo = versionNo;
+	}
+	public String getStatusName() {
+		return statusName;
+	}
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
+	}
+	public String getCategoryLevel1Name() {
+		return categoryLevel1Name;
+	}
+	public void setCategoryLevel1Name(String categoryLevel1Name) {
+		this.categoryLevel1Name = categoryLevel1Name;
+	}
+	public String getCategoryLevel2Name() {
+		return categoryLevel2Name;
+	}
+	public void setCategoryLevel2Name(String categoryLevel2Name) {
+		this.categoryLevel2Name = categoryLevel2Name;
+	}
+	public String getCategoryLevel3Name() {
+		return categoryLevel3Name;
+	}
+	public void setCategoryLevel3Name(String categoryLevel3Name) {
+		this.categoryLevel3Name = categoryLevel3Name;
+	}
+	public String getFlatformName() {
+		return flatformName;
+	}
+	public void setFlatformName(String flatformName) {
+		this.flatformName = flatformName;
+	}
 	public Data_Dictionary getData_Dictionary() {
 		return data_Dictionary;
 	}
 	public void setData_Dictionary(Data_Dictionary data_Dictionary) {
 		this.data_Dictionary = data_Dictionary;
 	}
-	public App_Categpry getApp_Categpry() {
+	public App_Category getApp_Categpry() {
 		return app_Categpry;
 	}
-	public void setApp_Categpry(App_Categpry app_Categpry) {
+	public void setApp_Categpry(App_Category app_Categpry) {
 		this.app_Categpry = app_Categpry;
 	}
 	public Integer getId() {
@@ -60,8 +104,8 @@ public class App_Info {
 	public String getAPKName() {
 		return APKName;
 	}
-	public void setAPKName(String aPKName) {
-		APKName = aPKName;
+	public void setaPKName(String APKName) {
+		this.APKName = APKName;
 	}
 	public String getSupportROM() {
 		return supportROM;

@@ -12,24 +12,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		i.flatformId,
 		(SELECT
 		valueName FROM data_dictionary d WHERE i.flatformId=d.valueId AND
-		typeCode='APP_FLATFORM'),
+		typeCode='APP_FLATFORM') AS flatformName,
 		i.categoryLevel1,
 		(SELECT
-		categoryName FROM app_category c WHERE c.id=i.categoryLevel1),
+		categoryName FROM app_category c WHERE c.id=i.categoryLevel1) AS categoryLevel1Name,
 		i.categoryLevel2,
 		(SELECT categoryName FROM
-		app_category c WHERE c.id=i.categoryLevel2),
+		app_category c WHERE c.id=i.categoryLevel2) AS categoryLevel2Name,
 		i.categoryLevel3,
 		(SELECT categoryName FROM app_category c WHERE
-		c.id=i.categoryLevel3),
+		c.id=i.categoryLevel3) AS categoryLevel3Name,
 		i.status,
 		(SELECT valueName
 		FROM data_dictionary d WHERE i.status=d.valueId AND
-		typeCode='APP_STATUS'),
+		typeCode='APP_STATUS') AS statusName,
 		i.downloads,
 		i.versionId,
 		(SELECT
-		versionNo FROM app_version v WHERE i.versionId=v.id)
+		versionNo FROM app_version v WHERE i.versionId=v.id) AS versionNo
 		FROM
 		app_info i
 
@@ -85,6 +85,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</trim>
 	</select>
 
+
+
+
+
+
+
+
+
+  
+
   <!--   修改INFO基本信息 -->
     <insert id="updateAppInfo" parameterType="app_Info" >
     	UPDATE app_info  a SET  a.softwareName=#{app_Info.softwareName} , 
@@ -105,6 +115,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     FROM app_info 
     WHERE id=#{id}
    </select>
+	<!-- 删除app信息byId -->
+   <delete id="delAppInfo">
+   	 DELETE FROM app_info WHERE id=${id}
+   </delete>
+   
+   
+   
    
    
    <!-- 查询待审核APP总数 -->

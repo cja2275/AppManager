@@ -5,12 +5,10 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 
 import cn.appmanager.dao.app_info.App_InfoMapper;
 
-import cn.appmanager.dao.app_info.App_InfoMapper;
 import cn.appmanager.pojo.App_Info;
 import cn.appmanager.tools.PageSupport;
 
@@ -18,18 +16,21 @@ import cn.appmanager.tools.PageSupport;
 public class App_infoServiceImpl implements App_infoService {
 	@Resource
 	private App_InfoMapper app_InfoMapper;
-	
-	public List<App_Info> getInfoList(String softwareName, String status, String flatformId, String categoryLevel1,
-			String categoryLevel2, String categoryLevel3, int start, int pageSize) {
-		return app_InfoMapper.getApp_InfoList(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3, start, pageSize);
+	//查询全部信息
+	public List<App_Info> getInfoList(String softwareName, Integer status, Integer flatformId, Integer categoryLevel1,
+			Integer categoryLevel2, Integer categoryLevel3, Integer currentPageNo, Integer pageSize) {
+		return app_InfoMapper.getApp_InfoList(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3, currentPageNo, pageSize);
 	}
 
-	@Override
-	public int getApp_InfoCount(String softwareName, String status, String flatformId, String categoryLevel1,
-			String categoryLevel2, String categoryLevel3) {
+	//查询全部数量
+	public int getApp_InfoCount(String softwareName, Integer status, Integer flatformId, Integer categoryLevel1,
+			Integer categoryLevel2, Integer categoryLevel3) {
 		return app_InfoMapper.getApp_InfoCount(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3);
 	}
 
+	
+
+	
 
 	//修改APP信息
 	public int updateAppInfo(App_Info app_Info){
@@ -56,5 +57,8 @@ public class App_infoServiceImpl implements App_infoService {
 		// TODO Auto-generated method stub
 		return this.app_InfoMapper.checkApp(id);
 	}
-
+	//删除app信息byID
+			public int delAppInfo(Integer id){
+				return this.app_InfoMapper.delAppInfo(id);
+			}
 }
