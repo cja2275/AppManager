@@ -1,8 +1,8 @@
 package cn.appmanager.dao.app_info;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Param;
 
 import cn.appmanager.pojo.App_Info;
 import cn.appmanager.tools.PageSupport;
@@ -36,6 +36,9 @@ public interface App_InfoMapper {
 	public int delAppInfo(@Param("id")Integer id);
 	
 
+	
+	
+	
 	public int countCheckingApp();
 
 	public List getCheckingAppList(@Param("page")PageSupport page);

@@ -6,6 +6,7 @@
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -17,9 +18,7 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+
 
 </head>
 
@@ -59,6 +58,8 @@
 					<c:forEach var="app_Category" items="${categoryLevel1List }">
 						<c:if test="${app_Category.id=categoryLevel1 }">selected="selected"</c:if>
 						<option value="${app_Category.id}">${app_Category.categoryName}</option>
+						<%-- <c:if test="${app_Category.id }==categoryLevel1">selected="selected"</c:if> --%>
+						<option  parentId="${app_Category.id}">${app_Category.categoryName}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -144,7 +145,8 @@
 			</c:if>
 	</div>
 
-
+	<script type="text/javascript" src="${pageContext.request.contextPath }/statics/js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/statics/js/app_infolist.js"></script>
 
 </body>
 </html>

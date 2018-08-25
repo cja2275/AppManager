@@ -25,4 +25,6 @@ public class Data_dictionaryServiceImpl implements Data_dictionaryService{
 		public List<Data_Dictionary> getPlatformList(){
 			return data_DictionaryMapper.getPlatformList();
 		}
+
+
 }

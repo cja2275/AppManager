@@ -47,7 +47,7 @@ public class App_infoServiceImpl implements App_infoService {
 	public PageSupport getCheckingApp(PageSupport page) {
 		// TODO Auto-generated method stub
 		page.setTotalCount(this.app_InfoMapper.countCheckingApp());
-		page.setPageSize(5);
+
 		page.setList(this.app_InfoMapper.getCheckingAppList(page));
 		return page;
 	}
