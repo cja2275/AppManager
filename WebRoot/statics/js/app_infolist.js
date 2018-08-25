@@ -7,6 +7,7 @@ $(function () {
             "data"      : "id="+parentId,    //要发送到服务器的数据
             "dataType"  : "text",          //指定返回的数据格式
             "success"   : function (data) {
+            	
             	$.each(JSON.parse(data), function(key, val) {  
             		 $("#categoryLevel2").append("<option parentId='"+val.id+"'>"+val.categoryName+"</option>")
 		             　　}); 

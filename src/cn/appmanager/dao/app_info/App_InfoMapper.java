@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import cn.appmanager.pojo.App_Category;
 import cn.appmanager.pojo.App_Info;
 import cn.appmanager.tools.PageSupport;
 
@@ -34,8 +35,10 @@ public interface App_InfoMapper {
 	public App_Info appInfoById(@Param("id")Integer id);
 	//删除app信息byID
 	public int delAppInfo(@Param("id")Integer id);
+	//查询分级
+	public List<App_Category> getCategoryList(@Param("parentId")Integer parentId);
 	
-
+	
 	
 	
 	

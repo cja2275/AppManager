@@ -16,10 +16,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and parentId is null
 			</if>
 		</trim>
-	
 	</select>
-	
-	
+	<!-- 通过id查parentId -->
+	<select id="getParentIdByID" resultType="int">
+	  SELECT parentId FROM app_category WHERE id =#{id}
+	</select>
 	
 	
 	
