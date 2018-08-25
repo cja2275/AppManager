@@ -1,14 +1,22 @@
 package cn.appmanager.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.support.config.FastJsonConfig;
 
 import cn.appmanager.pojo.App_Category;
 import cn.appmanager.pojo.App_Info;
@@ -29,9 +37,6 @@ public class UserController {
 	private Data_dictionaryService data_dictionaryService;
 	@Resource
 	private App_categoryService app_categoryService;
-	
-	
-
 	
 	//查看全部信息
 	@RequestMapping(value="/app_infolist.html")
@@ -128,17 +133,48 @@ public class UserController {
 		model.addAttribute("pages",pages);
 		return "app_infolist";
 	}
-		
-
 	
+	//接受ajax请求返回分类列表
+	@RequestMapping(value="/abc.html")
+	public List getplatformlistbyparentid(HttpServletRequest request){
+		Integer parentId = Integer.parseInt(request.getParameter("parentId"));
+		return app_categoryService.getCategoryLevelListByParentId(parentId);
+	}
+	
+		
 	//跳转修改APP基本信息
 	@RequestMapping(value="/updateApp_Info.html")
-	public String updateApp_Info(int id,Model model){
+	public String updateApp_Info(@RequestParam("id")int id,Model model){
+		System.out.println("id======================"+id);
 		App_Info a=app_infoService.appInfoById(id);
+		System.out.println(a.getAPKName());
+		//查二级分类列表
+		Integer parentId2=app_categoryService.getParentIdByID(a.getCategoryLevel2());
+		System.out.println("parentId2==========="+parentId2);
+		//查三级分类列表
+		Integer parentId3=app_categoryService.getParentIdByID(a.getCategoryLevel3());
+		System.out.println("parentId3==========="+parentId3);
 		List<Data_Dictionary> list=data_dictionaryService.getPlatformList();
+		List<App_Category> categeoryList=app_infoService.getCategoryList(null);
+		List<App_Category> categeoryList2=app_infoService.getCategoryList(parentId2);
+		List<App_Category> categeoryList3=app_infoService.getCategoryList(parentId3);
+
 		model.addAttribute("app_Info",a);
 		model.addAttribute("flatformList",list);
+		model.addAttribute("categeoryList", categeoryList);
+		model.addAttribute("categeoryList2", categeoryList2);
+		model.addAttribute("categeoryList3", categeoryList3);
 		return "updateApp";
+	}
+	//查看分级列表
+	@RequestMapping(value="/getcategorylist.html")
+	public List<App_Category> getCategoryList(@RequestParam(value="parentId",required=false)String parentId){
+		Integer parentIds = null;
+		if(!(parentId==null||parentId=="")){
+			parentIds=Integer.parseInt(parentId);
+		}
+		List<App_Category> list=app_infoService.getCategoryList(parentIds);
+		return list;
 	}
 	//保存修改
 	@RequestMapping(value="/updateApp_InfoSave.html",method=RequestMethod.POST)
@@ -150,12 +186,26 @@ public class UserController {
 		model.addAttribute("id",app_Info.getId());
 		return "updateApp";
 	}
+	
+	
+	
 	//显示平台列表
-	@RequestMapping(value="/getplatformlist.json")
-	public List<Data_Dictionary> getPlatformList(){
-		List<Data_Dictionary> list=data_dictionaryService.getPlatformList();
-		return list;
+	@RequestMapping("/getcategoryname.html")
+	@ResponseBody
+	public void getcategoryname(@RequestParam("id")Integer id,HttpServletResponse response) throws IOException{
+		response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+       
+        List list = app_categoryService.getCategoryLevelListByParentId(id);
+        
+        String json = JSON.toJSONString(list);
+        
+        out.print(json);
+        out.flush();
+        out.close();
 	}
+	
+	
 	//删除app信息
 	@RequestMapping("/delappinfo.html")
 	public String delAppInfo(@RequestParam("id")Integer id ,Model model){
@@ -173,4 +223,6 @@ public class UserController {
 		App_Info info=app_infoService.appInfoById(id);
 		String 
 	}*/
+	
+	
 }

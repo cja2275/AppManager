@@ -19,6 +19,10 @@ public class App_categoryServiceImpl implements App_categoryService {
 	public List<App_Category> getCategoryLevelListByParentId(Integer parentId) {
 		return app_categoryMapper.getCategoryLevelListByParentId(parentId);
 	}
+	//根据Id 查parentId
+	public int getParentIdByID(Integer id){
+		return app_categoryMapper.getParentIdByID(id);
+	}
 
 	
 }

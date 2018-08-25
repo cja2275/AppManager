@@ -11,4 +11,5 @@ public interface Data_DictionaryMapper {
 
 	public List<Data_Dictionary> getPlatformList();
 
+
 }

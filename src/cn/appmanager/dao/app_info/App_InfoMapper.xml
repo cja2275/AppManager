@@ -59,7 +59,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
-
 	<!-- 查询信息总数 -->
 	<select id="getApp_InfoCount" resultType="int">
 		SELECT COUNT(1) FROM app_info i
@@ -86,17 +85,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
-
-
-
-
-
-
-
   
-
   <!--   修改INFO基本信息 -->
-    <insert id="updateAppInfo" parameterType="app_Info" >
+    <update id="updateAppInfo" parameterType="app_Info" >
     	UPDATE app_info  a SET  a.softwareName=#{app_Info.softwareName} , 
     	a.supportROM=#{app_Info.supportROM},a.`interfaceLanguage`=#{app_Info.interfaceLanguage},
     	a.`softwareSize`=#{app_Info.softwareSize},a.`downloads`=#{app_Info.downloads},
@@ -104,17 +95,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	a.`categoryLevel2`=#{app_Info.categoryLevel2},a.`categoryLevel3`=#{app_Info.categoryLevel3},
     	a.`appInfo`=#{app_Info.appInfo},a.`logoPicPath`=#{app_Info.logoPicPath}
  		WHERE #{app_Info.appInfo.id};
-    </insert>
-    
-    
+    </update>
+    <!-- 查分级列表 -->
+    <select id="getCategoryList" resultType="App_Category">
+    	SELECT id ,categoryName FROM  app_category
+    	<trim prefix="where" prefixOverrides="and||or">
+    		<if test="parentId==null  ">
+    		parentId IS NULL;
+    		</if>
+    		<if test="parentId!=null">
+    		parentId = #{parentId}
+    		</if>
+    	</trim>
+    </select>
    <!-- 查询app信息byId -->
    <select id="appInfoById" resultType="App_Info">
-    SELECT softwareName,APKName,supportROM,interfaceLanguage,softwareSize,
-    downloads,flatformId,categoryLevel1,categoryLevel2,categoryLevel3,
-    `status`,appInfo,logoPicPath 
-    FROM app_info 
-    WHERE id=#{id}
-   </select>
+    SELECT i.softwareName,i.APKName,i.supportROM,i.interfaceLanguage,i.softwareSize,
+    i.downloads,i.flatformId,i.categoryLevel1,i.categoryLevel2,i.categoryLevel3,
+    i.`status`,i.appInfo,i.logoPicPath, c1.`categoryName` categoryLevel1Name,c2.`categoryName` categoryLevel2Name,c3.`categoryName` categoryLevel3Name
+    FROM app_info i,app_category c1,app_category c2,app_category c3
+    WHERE i.id=#{id} AND i.`categoryLevel1`= c1.`id` AND i.`categoryLevel2`=c2.id AND i.`categoryLevel3` =c3.`id` </select>
+   
+   
 	<!-- 删除app信息byId -->
    <delete id="delAppInfo">
    	 DELETE FROM app_info WHERE id=${id}
@@ -131,10 +133,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
    
    <!-- 分页查询待审核APP -->
-   <select id="getCheckingAppList" resultType="App_Info">
+   <select id="getCheckingAppList" resultType="App_Info" parameterType="cn.appmanager.tools.PageSupport">
    		select * from app_info
    		where status=1
-   		limit #{(page.currentPageNo-1)*page.pageSize},#{pageSize}
+   		limit ${(page.currentPageNo-1)*page.pageSize},${page.pageSize}
    </select>
    
    <!-- 审核APP -->

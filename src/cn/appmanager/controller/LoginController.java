@@ -47,9 +47,9 @@ public class LoginController {
 		int result = this.backend_userService.login(backend_User);
 		if(1==result){
 			request.getSession().setAttribute("login", "backendUser");
-			return "";
+			return "checkapp";
 		}
-		return "";
+		return "login";
 	}
 	
 	//注销

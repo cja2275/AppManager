@@ -56,13 +56,25 @@
 			</select>
 		</div>
 		<div>
-			一级分类: <input type="text" value="">
+			一级分类: <select id="categoryLevel1" name="categoryLevel1">
+						<c:forEach var="categeory" items="${categeoryList }">
+							<option value="${categeory.id }" ${app_Info.categoryLevel1==categeory.id?'selected':''} >${categeory.categoryName } </option>
+						</c:forEach>
+					</select>
 		</div>
 		<div>
-			二级分类: <input type="text" value="">
+			二级分类: <select  id="categoryLevel2" name="categoryLevel2">
+						<c:forEach var="categeory2" items="${categeoryList2 }">
+							<option value="${categeory2.id }" ${app_Info.categoryLevel2==categeory2.id?'selected':''} >${categeory2.categoryName } </option>
+						</c:forEach>
+					</select>
 		</div>
 		<div>
-			三级分类: <input type="text" value="">
+			三级分类: <select id="categoryLevel3" name="categoryLevel3">
+					<c:forEach var="categeory3" items="${categeoryList3 }">
+							<option value="${categeory3.id }" ${app_Info.categoryLevel3==categeory3.id?'selected':''} >${categeory3.categoryName } </option>
+						</c:forEach>
+					</select>
 		</div>
 		<div>
 			APP状态: <input type="text" value="">
