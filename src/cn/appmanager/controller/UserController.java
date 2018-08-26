@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.support.config.FastJsonConfig;
 
 import cn.appmanager.pojo.App_Category;
 import cn.appmanager.pojo.App_Info;
@@ -54,8 +53,6 @@ public class UserController {
 		List<Data_Dictionary> statusList=null;
 		List<Data_Dictionary> flatformIdList=null;
 		List<App_Category> categoryLevel1List=null;
-		List<App_Category> categoryLevel2List=null;
-		List<App_Category> categoryLevel3List=null;
 		// 设置页面容量
 		int pageSize = Constants.pageSize;
 		// 当前页码
