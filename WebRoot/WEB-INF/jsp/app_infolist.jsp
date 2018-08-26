@@ -18,7 +18,7 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-
+  <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/app_infolist.css" />
 
 </head>
 
@@ -112,11 +112,11 @@
 				<td>${app_Info.statusName }</td>
 				<td>${app_Info.downloads }</td>
 				<td>${app_Info.versionNo }</td>
-				<td><select name="caozuo">
-					<option onclick="" selected="selected">操作</option>
-					<option onclick="window.location.href='${pageContext.request.contextPath }/updateApp_Info.html?id=${app_Info.id}'">修改</option>
-					<option onclick="">删除</option>
-				</select></td>
+				<td><button   onclick="show()" >操作</button>
+					<div class='operation' >
+						<a href="${pageContext.request.contextPath }/user/updateApp_Info.html?id=${app_Info.id}">修改</a>
+					</div>
+				</td>
 			</tr>
 			</c:forEach>
 			</tr>

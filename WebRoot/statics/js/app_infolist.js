@@ -36,4 +36,12 @@ $(function () {
     		}
     	});
     })
-})
+    function show(){
+        var two=document.getElementById("two");
+        if(two.style.display=='block'){
+            two.style.display='none'
+            }else{
+                two.style.display='block'
+                }
+        };
+});
