@@ -165,6 +165,7 @@ public class UserController {
 	}
 	//查看分级列表
 	@RequestMapping(value="/getcategorylist.html")
+	@ResponseBody
 	public List<App_Category> getCategoryList(@RequestParam(value="parentId",required=false)String parentId){
 		Integer parentIds = null;
 		if(!(parentId==null||parentId=="")){
