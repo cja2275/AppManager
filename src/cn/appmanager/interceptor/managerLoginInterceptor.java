@@ -26,7 +26,7 @@ public class managerLoginInterceptor extends HandlerInterceptorAdapter{
 			throws Exception {
 		String userlogin = (String) request.getSession().getAttribute("login");
 		if(!"backendUser".equals(userlogin)){
-			response.sendRedirect("/AppManager/index.jsp");
+			response.sendRedirect("/AppManager/nologin");
 			System.out.println("用户未登录");
             return false;
 		}

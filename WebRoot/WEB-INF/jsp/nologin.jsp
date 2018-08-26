@@ -1,6 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -11,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>APPMANAGER</title>
+    <title>My JSP 'nologin.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,16 +23,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	<p>欢迎来到app管理系统  <span id="tips"></span>
-  	<script type="text/javascript">
-  		window.onload=function(){
-  			var login="<%=session.getAttribute("login")%>"; 
-	  		if("null"==login){
-	  			document.getElementById('tips').innerHTML = "请登录"
-	  			
-	  		}else{
-	  			document.getElementById('tips').innerHTML = "<a href='${pageContext.request.contextPath}/cancel'>注销</a>";
-	  		}
-  		}
-  		
-  	</script>
+    正在跳转登录页面..<span id="mes"></span>
+    <script language="javascript" type="text/javascript"> 
+		var i = 3; 
+		var intervalid; 
+		intervalid = setInterval("fun()", 1000); 
+		function fun() { 
+		if (i == 0) { 
+		window.location.href = "index.jsp"; 
+		clearInterval(intervalid); 
+		} 
+		document.getElementById("mes").innerHTML = i; 
+		i--; 
+		} 
+	</script>
+  </body>
+</html>

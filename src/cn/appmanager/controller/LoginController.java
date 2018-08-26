@@ -63,6 +63,11 @@ public class LoginController {
 	@RequestMapping(value="/cancel")
 	public String cancel(HttpServletRequest request){
 		request.getSession().removeAttribute("login");
-		return "redirect:/";
+		return "nologin";
+	}
+	
+	@RequestMapping(value="/nologin")
+	public String nologin(){
+		return "nologin";
 	}
 }

@@ -27,7 +27,7 @@ public class userLoginInterceptor extends HandlerInterceptorAdapter{
 			throws Exception {
 		String userlogin = (String) request.getSession().getAttribute("login");
 		if(!"divUser".equals(userlogin)){
-			response.sendRedirect("/AppManager/index.jsp");
+			response.sendRedirect("/AppManager/nologin");
 			System.out.println("用户未登录");
             return false;
 		}
