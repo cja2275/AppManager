@@ -61,8 +61,8 @@ public class LoginController {
 	
 	//注销
 	@RequestMapping(value="/cancel")
-	public String cancel(@RequestBody HttpServletRequest request){
+	public String cancel(HttpServletRequest request){
 		request.getSession().removeAttribute("login");
-		return "true";
+		return "redirect:/";
 	}
 }
