@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="cn.appmanager.dao.backend_user.Backend_UserMapper">
 	<select id="login" resultType="int">
-		SELECT COUNT(1) FROM dev_user WHERE
-		devcode = #{backend_User.userCode} AND
-		devpassword = #{backend_User.userPassword}
+		SELECT COUNT(1) FROM backend_user WHERE
+		userCode = #{backend_User.userCode} AND
+		userPassword = #{backend_User.userPassword}
 	</select>
 </mapper>

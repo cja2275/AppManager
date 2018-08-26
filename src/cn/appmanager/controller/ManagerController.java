@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.appmanager.service.app_info.App_infoService;
@@ -41,6 +42,7 @@ public class ManagerController {
 	
 	//用Ajax异步提交审核APP,返回Json数据装载审核结果
 	@RequestMapping(value="/checkappbyid")
+	@ResponseBody
 	public void checkAppById(HttpServletResponse response,HttpServletRequest request) throws IOException{
 		PrintWriter out = response.getWriter();
 		Integer id = Integer.parseInt(request.getParameter("id"));

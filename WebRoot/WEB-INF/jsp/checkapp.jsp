@@ -17,11 +17,14 @@
 		<c:forEach items="${page.list}" var="app">
 			<tr>
 				<td>${app.softwareName}</td>
-				<td><a href="${pageContext.request.contextPath}/manager/checkappbyid?id=${app.id}">审核</a></td>
+				<td class="checkbyid" appid="${app.id}">审核</td>
 			</tr>
 			
 		</c:forEach>
 		
 	</table>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/statics/js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/statics/js/checkapp.js"></script>
+	
 </body>
 </html>
