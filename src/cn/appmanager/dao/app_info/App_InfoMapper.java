@@ -26,6 +26,8 @@ public interface App_InfoMapper {
 		  	  					@Param("categoryLevel2")Integer categoryLevel2,
 		  	  					@Param("categoryLevel3")Integer categoryLevel3);
 
+	//增加APP信息
+	public int addApp_Info(App_Info app_Info);
 	
 	
 	//修改APP信息
@@ -34,6 +36,7 @@ public interface App_InfoMapper {
 	public App_Info appInfoById(@Param("id")Integer id);
 	//删除app信息byID
 	public int delAppInfo(@Param("id")Integer id);
+	
 	
 
 	

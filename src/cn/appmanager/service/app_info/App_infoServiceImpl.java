@@ -29,7 +29,10 @@ public class App_infoServiceImpl implements App_infoService {
 	}
 
 	
-
+	//增加APP信息
+	public int addApp_Info(App_Info app_Info) {
+		return app_InfoMapper.addApp_Info(app_Info);
+	}
 	
 
 	//修改APP信息
@@ -61,4 +64,5 @@ public class App_infoServiceImpl implements App_infoService {
 			public int delAppInfo(Integer id){
 				return this.app_InfoMapper.delAppInfo(id);
 			}
+
 }

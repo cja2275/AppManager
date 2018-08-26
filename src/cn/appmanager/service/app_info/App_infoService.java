@@ -2,7 +2,6 @@ package cn.appmanager.service.app_info;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 
 
 import cn.appmanager.pojo.App_Info;
@@ -16,7 +15,11 @@ public interface App_infoService {
 	// 查询总数量
 	public int getApp_InfoCount(String softwareName, Integer status, Integer flatformId, Integer categoryLevel1,
 			Integer categoryLevel2, Integer categoryLevel3);
-
+	
+	//增加APP信息
+	public int addApp_Info(App_Info app_Info);
+	
+	
 	// 修改APP信息
 	public int updateAppInfo(App_Info app_Info);
 

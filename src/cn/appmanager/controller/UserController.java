@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -141,6 +142,19 @@ public class UserController {
 		return app_categoryService.getCategoryLevelListByParentId(parentId);
 	}
 	
+	
+	//增加app信息
+	@RequestMapping(value="/addapp_info.html")
+	public String addApp_Info(Model model){
+		List<Data_Dictionary> flatformIdList=data_dictionaryService.getData_DictionaryList("APP_FLATFORM");
+		List<App_Category> categoryLevel1List=app_categoryService.getCategoryLevelListByParentId(null);
+		model.addAttribute(flatformIdList);
+		model.addAttribute(categoryLevel1List);
+		return "addapp_info";	
+	}
+	
+	
+	
 		
 	//跳转修改APP基本信息
 	@RequestMapping(value="/updateApp_Info.html")
@@ -197,6 +211,9 @@ public class UserController {
 		App_Info info=app_infoService.appInfoById(id);
 		String 
 	}*/
+	
+	
+	
 	
 	
 }

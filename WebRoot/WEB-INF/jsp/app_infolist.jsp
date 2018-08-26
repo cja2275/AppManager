@@ -24,7 +24,7 @@
 
 <body>
 	<div>
-		<form action="${pageContext.request.contextPath }/app_infolist.html"
+		<form action="${pageContext.request.contextPath }/user/app_infolist.html"
 			method="post">
 			<div>
 				软件名称：<input name=softwareName type="text" id="softwareName"
@@ -35,7 +35,7 @@
 					<c:if test="${statusList}!=null"></c:if>
 					<option>---请选择---</option>
 					<c:forEach var="data_Dictionary" items="${statusList }">
-						<c:if test="${data_Dictionary=status}">selected="selected"</c:if>
+<%-- 						<c:if test="${data_Dictionary=status}">selected="selected"</c:if> --%>
 						<option value="${data_Dictionary.valueId}">${data_Dictionary.valueName}</option>
 					</c:forEach>
 				</select>
@@ -46,7 +46,7 @@
 					<c:if test="${flatformIdList}!=null"></c:if>
 					<option>---请选择---</option>
 					<c:forEach var="data_Dictionary" items="${flatformIdList }">
-						<c:if test="${Data_Dictionary=flatformId }">selected="selected"</c:if>
+<%-- 						<c:if test="${Data_Dictionary=flatformId }">selected="selected"</c:if> --%>
 						<option value="${data_Dictionary.valueId}">${data_Dictionary.valueName}</option>
 					</c:forEach>
 				</select>
@@ -56,36 +56,36 @@
 					<c:if test="${categoryLevel1List}!=null"></c:if>
 					<option>---请选择---</option>
 					<c:forEach var="app_Category" items="${categoryLevel1List }">
-						<c:if test="${app_Category.id=categoryLevel1 }">selected="selected"</c:if>
-						<option value="${app_Category.id}">${app_Category.categoryName}</option>
-						<%-- <c:if test="${app_Category.id }==categoryLevel1">selected="selected"</c:if> --%>
-						<option  parentId="${app_Category.id}">${app_Category.categoryName}</option>
+						<%-- <c:if test="${app_Category.id=categoryLevel1 }">selected="selected"</c:if> --%>
+						<%-- <option value="${app_Category.id}">${app_Category.categoryName}</option> --%>
+<%-- 						<c:if test="${app_Category.id }==categoryLevel1">selected="selected"</c:if>
+ --%>						<option  parentId="${app_Category.id}">${app_Category.categoryName}</option>
 					</c:forEach>
 				</select>
 			</div>
 			<div>
 				二级分类：<select id="categoryLevel2" name="categoryLevel2">
-					<c:if test="${categoryLevel2List}!=null"></c:if>
+					<%-- <c:if test="${categoryLevel2List}!=null"></c:if> --%>
 					<option>---请选择---</option>
-					<c:forEach var="app_Category" items="${categoryLevel2List }">
+<%-- 					<c:forEach var="app_Category" items="${categoryLevel2List }">
 						<c:if test="${app_Category.id=categoryLevel2 }">selected="selected"</c:if>
 						<option value="${app_Category.id}">${app_Category.categoryName}</option>
-					</c:forEach>
+					</c:forEach> --%>
 				</select>
 			</div>
 			<div>
 				三级分类：<select id="categoryLevel3" name="categoryLevel3">
-					<c:if test="${categoryLevel3List}!=null"></c:if>
+					<%-- <c:if test="${categoryLevel3List}!=null"></c:if> --%>
 					<option>---请选择---</option>
-					<c:forEach var="app_Category" items="${categoryLevel3List }">
+<%-- 					<c:forEach var="app_Category" items="${categoryLevel3List }">
 						<c:if test="${app_Category.id=categoryLevel3 }">selected="selected"</c:if>
 						<option value="${app_Category.id}">${app_Category.categoryName}</option>
-					</c:forEach>
+					</c:forEach> --%>
 				</select>
 			</div>
 
 			<button type="submit"
-				onclick="window.location.href='${pageContext.request.contextPath }/app_infolist.html'">查询</button>
+				onclick="window.location.href='${pageContext.request.contextPath }/user/app_infolist.html'">查询</button>
 		</form>
 	</div>
 
