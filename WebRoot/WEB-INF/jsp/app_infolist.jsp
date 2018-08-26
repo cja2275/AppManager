@@ -117,7 +117,11 @@
 				<td>${app_Info.statusName }</td>
 				<td>${app_Info.downloads }</td>
 				<td>${app_Info.versionNo }</td>
-				<td><input type="button" value="点击操作"></td>
+				<td><select name="caozuo">
+					<option onclick="" selected="selected">操作</option>
+					<option onclick="window.location.href='${pageContext.request.contextPath }/updateApp_Info.html?id=${app_Info.id}'">修改</option>
+					<option onclick="">删除</option>
+				</select></td>
 			</tr>
 			</c:forEach>
 			</tr>

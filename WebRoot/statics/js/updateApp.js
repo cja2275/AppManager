@@ -8,7 +8,7 @@ $(function () {
     })
     
     function change2() {
-	    var parentId = $("#categoryLevel2 option:selected" ).attr("parentId");
+	    var parentId = $("#categoryLevel2 option:selected" ).val();
 	    $.ajax({
 	        "url"       : "http://localhost:8080/AppManager/user/getcategoryname.html",   //要提交的URL路径
 	        "type"      : "GET",           //发送请求的方式
@@ -17,7 +17,7 @@ $(function () {
 	        "success"   : function (data) {
 	        	$("#categoryLevel3").html("<option>---请选择---</option>");
 	            $.each(JSON.parse(data), function(key, val) {
-	                $("#categoryLevel3").append("<option parentId='"+val.id+"'>"+val.categoryName+"</option>")
+	                $("#categoryLevel3").append("<option value='"+val.id+"'>"+val.categoryName+"</option>")
 	            });
 	
 	        },        //响应成功后要执行的代码
@@ -27,7 +27,7 @@ $(function () {
 	    });
     }
     function change1() {
-        var parentId = $("#categoryLevel1 option:selected" ).attr("parentId");
+        var parentId = $("#categoryLevel1 option:selected" ).val();
         $.ajax({
             "url"       : "http://localhost:8080/AppManager/user/getcategoryname.html",   //要提交的URL路径
             "type"      : "GET",           //发送请求的方式
@@ -36,7 +36,7 @@ $(function () {
             "success"   : function (data) {
             	$("#categoryLevel2").html("<option>---请选择---</option>");
                 $.each(JSON.parse(data), function(key, val) {
-                    $("#categoryLevel2").append("<option parentId='"+val.id+"'>"+val.categoryName+"</option>")
+                    $("#categoryLevel2").append("<option value='"+val.id+"'>"+val.categoryName+"</option>")
                 });
 
             },        //响应成功后要执行的代码

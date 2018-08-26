@@ -3,7 +3,7 @@ package cn.appmanager.service.app_info;
 import java.util.List;
 
 
-
+import cn.appmanager.pojo.App_Category;
 import cn.appmanager.pojo.App_Info;
 import cn.appmanager.tools.PageSupport;
 
@@ -28,6 +28,10 @@ public interface App_infoService {
 
 	// 获得待审核APP列表
 	public PageSupport getCheckingApp(PageSupport page);
+	
+	//查询分级
+	public List<App_Category> getCategoryList(Integer parentId);
+
 
 	// 通过id改变审核状态
 	public int checkApp(Integer id);

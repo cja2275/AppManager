@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 import cn.appmanager.dao.app_info.App_InfoMapper;
-
+import cn.appmanager.pojo.App_Category;
 import cn.appmanager.pojo.App_Info;
 import cn.appmanager.tools.PageSupport;
 
@@ -34,6 +34,12 @@ public class App_infoServiceImpl implements App_infoService {
 		return app_InfoMapper.addApp_Info(app_Info);
 	}
 	
+
+	//查询分级
+		public List<App_Category> getCategoryList(Integer parentId){
+			return app_InfoMapper.getCategoryList( parentId);
+		}
+
 
 	//修改APP信息
 	public int updateAppInfo(App_Info app_Info){
