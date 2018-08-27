@@ -41,11 +41,11 @@ public class LoginController {
 		if(result==1){
 			request.getSession().setAttribute("login", "divUser");
 			System.out.println("login");
-			return "";
+			return "redirect:/user/app_infolist.html";
 		}else{
 			System.out.println("faillogin");
 		}
-		return "";
+		return "userlogin";
 	}
 	
 	//后台用户登录
