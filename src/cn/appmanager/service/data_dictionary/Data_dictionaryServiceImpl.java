@@ -26,5 +26,8 @@ public class Data_dictionaryServiceImpl implements Data_dictionaryService{
 			return data_DictionaryMapper.getPlatformList();
 		}
 
-
+		//APP状态列表
+		public List<Data_Dictionary> getAPP_STATUSList(){
+			return data_DictionaryMapper.getAPP_STATUSList();
+		}
 }

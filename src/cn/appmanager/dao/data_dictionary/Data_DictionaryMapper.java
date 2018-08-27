@@ -10,6 +10,7 @@ public interface Data_DictionaryMapper {
 	public List<Data_Dictionary> getData_DictionaryList(@Param("typeCode")String typeCode);
 
 	public List<Data_Dictionary> getPlatformList();
-
+	//APP状态列表
+	public List<Data_Dictionary> getAPP_STATUSList();
 
 }

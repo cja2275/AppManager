@@ -90,9 +90,6 @@ public class UserController {
 		}
 		
 		
-		
-		
-		
 		// 信息总数
 		int totalCount = app_infoService.getApp_InfoCount(softwareName, status, flatformId, categoryLevel1, categoryLevel2, categoryLevel3);
 		// 总页数
@@ -144,6 +141,7 @@ public class UserController {
 	public String updateApp_Info(@RequestParam("id")int id,Model model){
 		System.out.println("id======================"+id);
 		App_Info a=app_infoService.appInfoById(id);
+		List<Data_Dictionary> statusList=data_dictionaryService.getAPP_STATUSList();
 		System.out.println(a.getAPKName());
 		//查二级分类列表
 		Integer parentId2=app_categoryService.getParentIdByID(a.getCategoryLevel2());
@@ -155,7 +153,8 @@ public class UserController {
 		List<App_Category> categeoryList=app_infoService.getCategoryList(null);
 		List<App_Category> categeoryList2=app_infoService.getCategoryList(parentId2);
 		List<App_Category> categeoryList3=app_infoService.getCategoryList(parentId3);
-
+		
+		model.addAttribute("status",statusList);
 		model.addAttribute("app_Info",a);
 		model.addAttribute("flatformList",list);
 		model.addAttribute("categeoryList", categeoryList);
@@ -176,10 +175,10 @@ public class UserController {
 	}
 	//保存修改
 	@RequestMapping(value="/updateApp_InfoSave.html",method=RequestMethod.POST)
-	public String updateApp_InfoSave(@RequestParam("App_Info")App_Info app_Info,
+	public String updateApp_InfoSave(App_Info app_Info,
 										Model model){
 		if(app_infoService.updateAppInfo(app_Info)>0){
-			return "app_infolist";
+			return "redirect:/user/app_infolist.html";
 		}
 		model.addAttribute("id",app_Info.getId());
 		return "updateApp";
@@ -222,5 +221,11 @@ public class UserController {
 		String 
 	}*/
 	
-	
+	//查看APP状态
+/*	@RequestMapping(value="/getappstatuslist.html") 
+	public List<Data_Dictionary> getAPP_STATUSList(){
+		
+			List<Data_Dictionary> list=data_dictionaryService.getAPP_STATUSList(null);
+			return list;
+	}*/
 }
