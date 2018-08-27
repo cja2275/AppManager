@@ -26,7 +26,8 @@
 <body>
 	<div>
 		<form
-			action="${pageContext.request.contextPath }/user/app_infolist.html">
+			action="${pageContext.request.contextPath }/user/addapp_infosave.html"
+			method="post" enctype="multipart/form-data">
 
 			<table border=1>
 				<tr>
@@ -69,7 +70,7 @@
 					<td><select id="categoryLevel1" name="categoryLevel1">
 							<c:if test="${categoryLevel1List }!=null"></c:if>
 							<option>---请选择---</option>
-							<c:forEach var="app_Category" items="${app_CategoryLevel1List}">
+							<c:forEach var="app_Category" items="${categoryLevel1List}">
 								<option value="${app_Category.id}">${app_Category.categoryName }</option>
 							</c:forEach>
 					</select></td>
@@ -77,13 +78,11 @@
 				<tr>
 					<td>二级分类：</td>
 					<td><select id="categoryLevel2" name="categoryLevel2">
-							<option>---请选择---</option>
 					</select></td>
 				</tr>
 				<tr>
 					<td>三级分类：</td>
 					<td><select id="categoryLevel3" name="categoryLevel3">
-							<option>---请选择---</option>
 					</select></td>
 				</tr>
 				<tr>
@@ -101,26 +100,21 @@
 
 				<tr>
 					<td>
-						<button type="submit"
-							onclick="window.location.href='${pageContext.request.contextPath }/user/app_infolist.html'">保存</button>
+						<button type="submit">保存</button>
 						<button type="button"
 							onclick="window.location.href='${pageContext.request.contextPath }/user/app_infolist.html'">返回</button>
 					</td>
 				</tr>
 
 
-
-
-
-
-
-
-
-
-
-
 			</table>
 		</form>
 	</div>
+
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/statics/js/jquery-1.12.4.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/statics/js/addapp_info.js"></script>
 </body>
 </html>

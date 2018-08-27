@@ -37,7 +37,7 @@
 					<c:if test="${statusList}!=null"></c:if>
 					<option value="">---请选择---</option>
 					<c:forEach var="data_Dictionary" items="${statusList }">
-<%-- 						<c:if test="${data_Dictionary=status}">selected="selected"</c:if> --%>
+						<%-- 						<c:if test="${data_Dictionary=status}">selected="selected"</c:if> --%>
 						<option value="${data_Dictionary.valueId}">${data_Dictionary.valueName}</option>
 					</c:forEach>
 				</select>
@@ -48,7 +48,6 @@
 					<c:if test="${flatformIdList}!=null"></c:if>
 					<option>---请选择---</option>
 					<c:forEach var="data_Dictionary" items="${flatformIdList }">
-<%-- 						<c:if test="${Data_Dictionary=flatformId }">selected="selected"</c:if> --%>
 						<option value="${data_Dictionary.valueId}">${data_Dictionary.valueName}</option>
 					</c:forEach>
 				</select>
@@ -65,25 +64,13 @@
 			</div>
 			<div>
 				二级分类：<select id="categoryLevel2" name="categoryLevel2">
-					<%-- <c:if test="${categoryLevel2List}!=null"></c:if> --%>
-					<option>---请选择---</option>
-<%-- 					<c:forEach var="app_Category" items="${categoryLevel2List }">
-						<c:if test="${app_Category.id=categoryLevel2 }">selected="selected"</c:if>
-						<option value="${app_Category.id}">${app_Category.categoryName}</option>
-					</c:forEach> --%>
-					<c:if test="${categoryLevel2List}!=null"></c:if>
 					<option>---请选择---</option>
 
 				</select>
 			</div>
 			<div>
 				三级分类：<select id="categoryLevel3" name="categoryLevel3">
-					<%-- <c:if test="${categoryLevel3List}!=null"></c:if> --%>
 					<option>---请选择---</option>
-<%-- 					<c:forEach var="app_Category" items="${categoryLevel3List }">
-						<c:if test="${app_Category.id=categoryLevel3 }">selected="selected"</c:if>
-						<option value="${app_Category.id}">${app_Category.categoryName}</option>
-					</c:forEach> --%>
 				</select>
 			</div>
 
@@ -91,6 +78,13 @@
 				onclick="window.location.href='${pageContext.request.contextPath }/user/app_infolist.html'">查询</button>
 		</form>
 	</div>
+
+
+	<div>
+		<button
+			onclick="window.location.href='${pageContext.request.contextPath }/user/addapp_info.html'">增加APP信息</button>
+	</div>
+
 
 	<div>
 		<table border=1px>
@@ -126,8 +120,7 @@
 									href="${pageContext.request.contextPath }/user/updateApp_Info.html?id=${app_Info.id}">修改</a>
 								<a
 									href="${pageContext.request.contextPath }/user/delappinfo.html?id=${app_Info.id}"
-									onclick="return confirmd()">删除</a>
-								<a >查看</a>	
+									onclick="return confirmd()">删除</a> <a>查看</a>
 							</div></td>
 					</tr>
 				</c:forEach>

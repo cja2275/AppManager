@@ -86,7 +86,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<!-- 增加APP信息 -->
-	<insert id="addApp_Info" parameterType="App_Info">
+	<insert id="addApp_Info">
 		INSERT INTO app_info(`softwareName`,`APKName`,`supportROM`,
 		`interfaceLanguage`,`softwareSize`,`downloads`,`flatformId`,
 		`categoryLevel1`,`categoryLevel2`,`categoryLevel3`,`status`,
