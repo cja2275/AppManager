@@ -180,7 +180,7 @@ public class UserController {
 	//查看分级列表
 	@RequestMapping(value="/getcategorylist.html")
 	@ResponseBody
-	public List<App_Category> getCategoryList(@RequestParam(value="parentId",required=false)String parentId){
+	public List<App_Category> getCategoryList(@RequestParam(value="id")String parentId){
 		Integer parentIds = null;
 		if(!(parentId==null||parentId=="")){
 			parentIds=Integer.parseInt(parentId);
@@ -201,7 +201,7 @@ public class UserController {
 	
 	
 	
-	//显示平台列表
+	//显示分级列表
 	@RequestMapping("/getcategoryname.html")
 	@ResponseBody
 	public void getcategoryname(@RequestParam("id")Integer id,HttpServletResponse response) throws IOException{
@@ -227,7 +227,7 @@ public class UserController {
 		}else{
 			model.addAttribute("error","删除失败");
 		}
-		return "app_infolist";
+		return "redirect:/user/app_infolist.html";
 	}
 	//查看app信息
 	

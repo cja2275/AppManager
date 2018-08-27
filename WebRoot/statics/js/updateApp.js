@@ -10,7 +10,7 @@ $(function () {
     function change2() {
 	    var parentId = $("#categoryLevel2 option:selected" ).val();
 	    $.ajax({
-	        "url"       : "http://localhost:8080/AppManager/user/getcategoryname.html",   //要提交的URL路径
+	        "url"       : "http://localhost:8080/AppManager/user/getcategorylist.html",   //要提交的URL路径
 	        "type"      : "GET",           //发送请求的方式
 	        "data"      : "id="+parentId,    //要发送到服务器的数据
 	        "dataType"  : "text",          //指定返回的数据格式
@@ -29,7 +29,7 @@ $(function () {
     function change1() {
         var parentId = $("#categoryLevel1 option:selected" ).val();
         $.ajax({
-            "url"       : "http://localhost:8080/AppManager/user/getcategoryname.html",   //要提交的URL路径
+            "url"       : "http://localhost:8080/AppManager/user/getcategorylist.html",   //要提交的URL路径
             "type"      : "GET",           //发送请求的方式
             "data"      : "id="+parentId,    //要发送到服务器的数据
             "dataType"  : "text",          //指定返回的数据格式
