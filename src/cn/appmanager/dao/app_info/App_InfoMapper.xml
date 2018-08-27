@@ -85,6 +85,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
+	<!-- 增加APP信息 -->
+	<insert id="addApp_Info">
+		INSERT INTO app_info(`softwareName`,`APKName`,`supportROM`,
+		`interfaceLanguage`,`softwareSize`,`downloads`,`flatformId`,
+		`categoryLevel1`,`categoryLevel2`,`categoryLevel3`,`status`,
+		`appInfo`,`logoPicPath`)
+		VALUES (#{softwareName},#{APKName},#{supportROM},#{interfaceLanguage},
+		#{softwareSize},#{downloads},#{flatformId},#{categoryLevel1},
+		#{categoryLevel2},#{categoryLevel3},#{status},#{appInfo},#{logoPicPath})
+	</insert>
+
+
+
+
   
   <!--   修改INFO基本信息 -->
     <update id="updateAppInfo"  >
@@ -96,6 +110,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	a.`appInfo`=#{app_Info.appInfo},a.`logoPicPath`=#{app_Info.logoPicPath}
  		WHERE a.id=#{app_Info.id};
     </update>
+
     <!-- 查分级列表 -->
     <select id="getCategoryList" resultType="App_Category">
     	SELECT id ,categoryName FROM  app_category
@@ -108,6 +123,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     		</if>
     	</trim>
     </select>
+
    <!-- 查询app信息byId -->
    <select id="appInfoById" resultType="App_Info">
     SELECT i.id,i.softwareName,i.APKName,i.supportROM,i.interfaceLanguage,i.softwareSize,

@@ -40,7 +40,6 @@ public class App_Info {
 	  private String statusName;//状态名称
 	  private String versionNo;//最新版本号
 	  
-	  
 	public String getVersionNo() {
 		return versionNo;
 	}

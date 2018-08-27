@@ -29,11 +29,17 @@ public class App_infoServiceImpl implements App_infoService {
 	}
 
 	
+	//增加APP信息
+	public int addApp_Info(App_Info app_Info) {
+		return app_InfoMapper.addApp_Info(app_Info);
+	}
+	
 
 	//查询分级
 		public List<App_Category> getCategoryList(Integer parentId){
 			return app_InfoMapper.getCategoryList( parentId);
 		}
+
 
 	//修改APP信息
 	public int updateAppInfo(App_Info app_Info){
@@ -64,4 +70,5 @@ public class App_infoServiceImpl implements App_infoService {
 			public int delAppInfo(Integer id){
 				return this.app_InfoMapper.delAppInfo(id);
 			}
+
 }
