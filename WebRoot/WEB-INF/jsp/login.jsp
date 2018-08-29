@@ -45,20 +45,39 @@
 
 <body class="login">
 	<div>
-		<a class="hiddenanchor" id="signup"></a> <a class="hiddenanchor"
-			id="signin"></a>
+		<a class="hiddenanchor" id="signup"></a> 
+		<a class="hiddenanchor"	id="signin"></a>
+
 		<div class="login_wrapper">
-			
-					<h1>APP管理信息系统</h1>
+			<div class="animate form login_form">
+				<section class="login_content">
+				<form action="devUserlogin" method="post">
+					<h1>APP开发者平台</h1>
 					<div>
-						<a class="btn btn-link "
-							href="${pageContext.request.contextPath}/managerlogin.html">后台管理系统</a>
+						<input type="text" name="devCode" class="form-control" placeholder="账号"	required="" />
 					</div>
 					<div>
-						<a class="btn btn-link	 "
-							href="${pageContext.request.contextPath}/devUserlogin.html">开发者平台入口</a>
-			</div>
+						<input type="password" name="devPassword" class="form-control" placeholder="密码"	required="" />
+					</div>
+					<div>
+						<a class="btn btn-success submit" href="index.html">登录</a>
+						<a class="btn btn-default submit" href="index.html">重填</a>
+					<!-- <input type="submit" class="btn btn-success submit" value='登录'></input>
+					<input type="reset" class="btn btn-default submit" value='重置'></input> -->
+					</div>
+					</br>
+					<div>
+						<p>©2016 All Rights Reserved.</p>
+					</div>
+		
+			</form>
+			</section>
 		</div>
+	</div>
+	</form>
+	</section>
+	</div>
+	</div>
 	</div>
 </body>
 </html>

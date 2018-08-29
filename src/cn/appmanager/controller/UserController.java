@@ -221,25 +221,12 @@ public class UserController {
 		}
 		return "redirect:/user/app_infolist.html";
 	}
-	//查看app信息
-	
-	/*public String showAppInfo(@RequestParam("id")Integer id ,Model model){
-		App_Info info=app_infoService.appInfoById(id);
-		String 
-	}*/
-	
-	//查看APP状态
-/*	@RequestMapping(value="/getappstatuslist.html") 
-	public List<Data_Dictionary> getAPP_STATUSList(){
-		
-			List<Data_Dictionary> list=data_dictionaryService.getAPP_STATUSList(null);
-			return list;
-	}*/
-	// 查看app信息
 
-	/*
-	 * public String showAppInfo(@RequestParam("id")Integer id ,Model model){
-	 * App_Info info=app_infoService.appInfoById(id); String }
-	 */
+	@RequestMapping("/login.html")
+	public String login(){
+		return "login";
+	}
+
+
 
 }
