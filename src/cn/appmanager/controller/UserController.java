@@ -48,7 +48,6 @@ public class UserController {
 			@RequestParam(value = "categoryLevel2", required = false) String _categoryLevel2,
 			@RequestParam(value = "categoryLevel3", required = false) String _categoryLevel3,
 			@RequestParam(value = "pageIndex", required = false) String pageIndex) {
-
 		List<App_Info> app_InfoList = null;
 		List<Data_Dictionary> statusList = null;
 		List<Data_Dictionary> flatformIdList = null;
@@ -66,26 +65,29 @@ public class UserController {
 		}
 
 		Integer status = null;
-		if (_status != null && !("").equals(_status)) {
+		if (_status != null && !(("").equals(_status))) {
+			System.out.println("能进来吗查状态");
 			status = Integer.parseInt(_status);
+			
 		}
 		Integer flatformId = null;
-		if (_flatformId != null && !("").equals(_flatformId)) {
+		if (_flatformId != null && !(("").equals(_flatformId))) {
+			System.out.println("能进来吗查平台");
 			flatformId = Integer.parseInt(_flatformId);
 		}
 
 		Integer categoryLevel1 = null;
-		if (_categoryLevel1 != null && !("").equals(_categoryLevel1)) {
+		if (_categoryLevel1 != null && !(("").equals(_categoryLevel1))) {
 			categoryLevel1 = Integer.parseInt(_categoryLevel1);
 		}
 
 		Integer categoryLevel2 = null;
-		if (_categoryLevel2 != null && !("").equals(_categoryLevel2)) {
+		if (_categoryLevel2 != null && !(("").equals(_categoryLevel2))) {
 			categoryLevel2 = Integer.parseInt(_categoryLevel2);
 		}
 
 		Integer categoryLevel3 = null;
-		if (_categoryLevel3 != null && !("").equals(_categoryLevel3)) {
+		if (_categoryLevel3 != null && !(("").equals(_categoryLevel3))) {
 			categoryLevel3 = Integer.parseInt(_categoryLevel3);
 		}
 

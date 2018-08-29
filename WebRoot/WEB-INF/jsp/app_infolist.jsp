@@ -35,7 +35,7 @@
 			<div>
 				APP状态： <select id="status" name="status">
 					<c:if test="${statusList}!=null"></c:if>
-					<option value="">---请选择---</option>
+					<option value="">---请选择APP状态---</option>
 					<c:forEach var="data_Dictionary" items="${statusList }">
 						<%-- 						<c:if test="${data_Dictionary=status}">selected="selected"</c:if> --%>
 						<option value="${data_Dictionary.valueId}">${data_Dictionary.valueName}</option>
@@ -46,7 +46,7 @@
 			<div>
 				所属平台：<select id="flatformId" name="flatformId">
 					<c:if test="${flatformIdList}!=null"></c:if>
-					<option>---请选择---</option>
+					<option value="">---请选择所属平台---</option>
 					<c:forEach var="data_Dictionary" items="${flatformIdList }">
 						<option value="${data_Dictionary.valueId}">${data_Dictionary.valueName}</option>
 					</c:forEach>
@@ -55,22 +55,22 @@
 			<div>
 				一级分类：<select id="categoryLevel1" name="categoryLevel1">
 					<c:if test="${categoryLevel1List}!=null"></c:if>
-					<option>---请选择---</option>
+					<option value="">---请选择1---</option>
 					<c:forEach var="app_Category" items="${categoryLevel1List }">
 						<%-- <c:if test="${app_Category.id }==categoryLevel1">selected="selected"</c:if> --%>
-						<option parentId="${app_Category.id}">${app_Category.categoryName}</option>
+						<option value="${app_Category.id}">${app_Category.categoryName}</option>
 					</c:forEach>
 				</select>
 			</div>
 			<div>
 				二级分类：<select id="categoryLevel2" name="categoryLevel2">
-					<option>---请选择---</option>
+					<option value="">---请选择2---</option>
 
 				</select>
 			</div>
 			<div>
 				三级分类：<select id="categoryLevel3" name="categoryLevel3">
-					<option>---请选择---</option>
+					<option value="">---请选择3---</option>
 				</select>
 			</div>
 
