@@ -17,8 +17,8 @@
   
     <!-- 配置监听 -->
   <listener>
-    <listener-class>
-			org.springframework.web.util.Log4jConfigListener
+   		 <listener-class>
+			org.springframework.web.context.ContextLoaderListener
 		</listener-class>
   </listener>
   

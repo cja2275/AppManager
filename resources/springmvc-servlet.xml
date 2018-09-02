@@ -42,9 +42,7 @@
 	<mvc:default-servlet-handler />
 
 	<context:component-scan base-package="cn.appmanager.controller" />
-
-	<mvc:resources location="/statics/" mapping="/statics/**"></mvc:resources>
-
+	
 	<!-- 配置多视图解析器：允许同样的内容数据呈现不同的view -->
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
@@ -59,6 +57,7 @@
 		</property>
 		<property name="viewResolvers">
 			<list>
+			<!-- 视图解析器 -->
 				<bean
 					class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 					<property name="prefix" value="/WEB-INF/jsp/" />
@@ -67,6 +66,8 @@
 			</list>
 		</property>
 	</bean>
+		<!-- 配置静态文件 -->
+	<mvc:resources location="/statics/" mapping="/statics/**"></mvc:resources>
 
 	<!-- 配置interceptors -->
 	<mvc:interceptors>
